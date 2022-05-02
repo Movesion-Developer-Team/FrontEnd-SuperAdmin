@@ -1,0 +1,96 @@
+<div class="">
+    <div class="table-wrapper">
+    <div class="table-title">
+    <div class="row">
+    <div class="col-sm-8"><h2>Modification </h2></div>
+    <div class="col-sm-2">
+    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+    </div>
+    </div>
+    </div>
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>address</th>
+    <th>numberOfEmployees</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>LG</td>
+    <td>via ...</td>
+    <td>122</td>
+    <td>
+    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+    </td>
+    </tr>
+    <tr>
+    <td>ss</td>
+    <td>aaaa</td>
+    <td>11</td>
+    <td>
+    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+    </td>
+    </tr>
+    <tr>
+    <td>sss</td>
+    <td>ssss</td>
+    <td>1111</td>
+    <td>
+    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+    <div class="routerOutlet">
+        <router-outlet></router-outlet>
+      </div>
+
+      </div>
+
+      <h3 class="text-primary" align="center">Add Remove Table Row Dynamically In Angular</h3>
+      <div class="container">
+        <div class="panel-group">
+          <div class="panel panel-primary">
+              <div class="panel-body">
+                <button (click)="addRow()" class="btn btn-primary pull-right" style="cursor: pointer;">Add</button><br>
+                  <table class="table table-bordered">
+                  <thead class="text text-primary">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile Number</th>
+                            <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of rows; let i = index;">
+                           <td>
+                             <input [(ngModel)]="rows[i].name" class="form-control" type="text" />
+                           </td>
+                           <td>
+                             <input [(ngModel)]="rows[i].email" class="form-control" type="text" />
+                           </td>
+                           <td>
+                             <input [(ngModel)]="rows[i].mobno" class="form-control" type="text"/>
+                           </td>
+                           <td><button class="btn btn-danger" (click)="deleteRow(i)" style='cursor: pointer;'>Remove</button></td>
+                       </tr>
+                   </tbody>
+                  </table>
+                  <button class="btn btn-info" (click)="submit()">Submit</button>
+              </div>
+          </div>
+          </div>
+      </div>
+    

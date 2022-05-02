@@ -1,0 +1,58 @@
+
+<div class="card">
+    <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label > categoryId </label>
+                   <select type="number" formControlName="categoryId" class="form-control" placeholder="categoryId" >
+                       <option *ngFor="let category of listData" [value]="category.id">
+                           {{category.name}}
+                       </option> 
+                   </select>
+                   </div>
+
+
+           
+
+          <div class="form-group ">
+                <label >shortname </label>
+                <input type="text" formControlName="shortName" class="form-control" placeholder="shortName"  >
+          </div>
+                <div class="form-group ">
+                <label > fullName </label>
+                 <input  type="text"formControlName="fullName" class="form-control" placeholder="fullName" > 
+                </div>
+               
+              
+                <div class="form-group">
+                <label > playStoreLink </label>
+                <input type="text"formControlName="playStoreLink" class="form-control" placeholder="playStoreLink" >   
+                </div>
+                
+                
+                <div class="form-group">
+                <label > appStoreLink </label>
+                <input type="text" formControlName="appStoreLink" class="form-control" placeholder="appStoreLink" >
+                </div>
+            
+                <div class="form-group">
+                <label >linkDescription</label>
+                <input type="text" formControlName="linkDescription" class="form-control" placeholder="linkDescription" >
+                </div>
+                    
+                <div class="form-group">
+                <label > color </label>
+                <input type="number" formControlName="color" class="form-control" placeholder="color" >
+                </div>
+           
+
+
+                <button type="submit" class="btn btn-secondary btn-block" >update</button>
+
+                <div class="alert alert-success" *ngIf="isLoggedIn">
+                    <br>
+                    Your Player Just updated  :)
+                  </div>
+          
+
+</form>
+</div>

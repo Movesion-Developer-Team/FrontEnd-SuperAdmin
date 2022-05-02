@@ -1,0 +1,65 @@
+
+<form [formGroup]="asscoiationForm"  (ngSubmit)="submit()">
+    <h1>choose a player </h1>
+     
+      <div class="form-group ">
+        <select  class="form-control" formControlName="playerId">
+            <option *ngFor="let player of listPlayer" [value]="player.id">
+                {{player.shortName}} {{player.id}}
+            </option> 
+        </select>
+          </div>
+    <h1>assign it to a company:</h1>
+            <div class="form-group">
+        <select class="form-control" formControlName="companyId">
+            <option *ngFor="let company of listCompany" [value]="company.id">
+                {{company.name}} {{company.id}}
+            </option>
+        </select>
+          </div>
+        <button class="btn btn-warning" type="submit">select</button>
+        <div class="alert alert-warning" *ngIf="isLoggedIn">
+            <br>
+            Your player linked to the company  :)
+        </div>
+        </form>
+
+        <br>
+        <br>
+        <br>
+        
+
+
+
+  <div class="col-md-4 mt-6 mb-6">
+    <div class="search">
+        <input type="text" [(ngModel)]="term" class="searchTerm" placeholder="which association are you looking for?"  maxlength="40" size="84">
+      </div>
+      <table class="table table-dark" >
+          <thead>
+              <tr class="black">
+                  
+                  <th> company ID</th>
+                  <th> player ID</th>
+                 
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of listData | filter:term |paginate: { itemsPerPage: 9, currentPage: page }">
+                  <td><span>{{item.companyId}}</span></td>
+                  <td><span>{{item.playerId}}</span></td>
+                  
+                  <td>
+                    <div class="yeer">
+                
+                        <button type="button" class="hl-sort" (click)="removeItem (item )">remove</button><br> <br>
+                        <button type="button" class="hl-sort" (click)="onClickForm()">update</button> <br>
+                   
+                    </div>
+                  
+              </tr>
+          </tbody>
+      </table>
+      
+      <pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
+  </div>

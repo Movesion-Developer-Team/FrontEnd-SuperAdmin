@@ -1,0 +1,213 @@
+<!-- 
+<h1 *ngIf="isAddMode">Add User</h1>
+<h1 *ngIf="!isAddMode">Edit User</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Title</label>
+            <select formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted  }">
+                <option value=""></option>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms">Ms</option>
+            </select>
+            <div *ngIf="submitted " class="invalid-feedback">
+                <div *ngIf="">Title is required</div>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted }" />
+            <div *ngIf="submitted " class="invalid-feedback">
+                
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted  }" />
+            <div *ngIf="submitted" class="invalid-feedback">
+                
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-7">
+            <label>Email</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted }" />
+            <div *ngIf="submitted " class="invalid-feedback">
+                
+               
+            </div>
+        </div>
+        <!-- <div class="form-group col">
+            <label>Role</label>
+            <select formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                <option value=""></option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                <div *ngIf="f.role.errors.required">Role is required</div>
+            </div>
+        </div> -->
+    <!-- </div>
+    <div *ngIf="!isAddMode">
+        <h3 class="pt-3">Change Password</h3>
+        <p>Leave blank to keep the same password</p>
+    </div> -->
+    <!-- <div class="form-row">
+        <div class="form-group col">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label>Confirm Password</label>
+            <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/list" class="btn btn-link">Cancel</a>
+    </div>
+</form> --> 
+
+
+
+
+<div class="card">
+    <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label > categoryId </label>
+                   <select type="number" formControlName="categoryId" class="form-control" placeholder="categoryId" >
+                       <option *ngFor="let category of listData" [value]="category.id">
+                           {{category.name}}
+                       </option> 
+                   </select>
+                   </div>
+
+
+                   <!-- <div class="form-group ">
+                    <label >categoryId </label>
+                    <input type="number" formControlName="categoryId" class="form-control" placeholder="categoryId"  >
+              </div> -->
+
+                   <!-- <div class="form-group ">
+                    <label >category </label>
+                    <input type="number" formControlName="shortName" class="form-control" placeholder="category"  >
+              </div> -->
+
+          <div class="form-group ">
+                <label >shortname </label>
+                <input type="text" formControlName="shortName" class="form-control" placeholder="shortName"  >
+          </div>
+                <div class="form-group ">
+                <label > fullName </label>
+                 <input  type="text"formControlName="fullName" class="form-control" placeholder="fullName" > 
+                </div>
+               
+              
+                <div class="form-group">
+                <label > playStoreLink </label>
+                <input type="text"formControlName="playStoreLink" class="form-control" placeholder="playStoreLink" >   
+                </div>
+                
+                
+                <div class="form-group">
+                <label > appStoreLink </label>
+                <input type="text" formControlName="appStoreLink" class="form-control" placeholder="appStoreLink" >
+                </div>
+            
+                <div class="form-group">
+                <label >linkDescription</label>
+                <input type="text" formControlName="linkDescription" class="form-control" placeholder="linkDescription" >
+                </div>
+                    
+                <div class="form-group">
+                <label > color </label>
+                <input type="number" formControlName="color" class="form-control" placeholder="color" >
+                </div>
+                <!-- <div class="form-group">
+                    <label > Category </label>
+                    <form [formGroup]="categoryForm"  >
+                        <p>
+                           <select  class="box" formControlName="category">
+                               <option *ngFor="let category of listData" [ngValue]="category.name">
+                                   {{category.name}}
+                               </option> 
+                       
+                           
+                           </select> 
+                           <button class="btn btn-warning" id="btn2" type="submit">select</button>
+                       </p>
+                       </form>
+                </div> -->
+
+
+                <button type="submit" class="btn btn-secondary btn-block" >Add</button>
+
+                <div class="alert alert-success" *ngIf="isLoggedIn">
+                    <br>
+                    Your Player Just Created  :)
+                  </div>
+                <!-- <button type="button" class="btn btn-secondary btn-block" (click)="reset()">reset</button>
+                <div class="form-group">
+                 
+                
+                 </div>    
+                 <button type="button" class="btn btn-secondary btn-block" (click)="remove()">Remove</button> -->
+                
+     
+     
+        
+   
+
+ 
+     <!-- <div class="search">
+        <input type="text" [(ngModel)]="term" class="searchTerm" placeholder="What Player are you looking for?"  maxlength="40" size="88">
+      </div>
+
+    <div class="col-md-4 mt-6 mb-6">
+        <table class="table table-dark" >
+            
+            <thead>
+                <tr class="black">
+                    <th> shortName</th>
+                    <th> fullName</th>
+                    <th>  playStoreLink</th>
+                    <th> appStoreLink</th>
+                    <th> linkDescription</th>
+                    <th> Color</th>
+                    <th> ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listData | filter:term">
+                    <td><span>{{item.shortName}}</span></td>
+                    <td><span>{{item.fullName}}</span></td>
+                    <td><span>{{item.playStoreLink}}</span></td>
+                    <td><span>{{item.appStoreLink}}</span></td>
+                    <td><span>{{item.linkDescription}}</span></td>
+                    <td><span>{{item.color}}</span></td>
+                    <td><button type="button" class="btn btn-secondary btn-block" (click)="removeItem(item)">remove</button> <br>
+                        <button type="button" class="btn btn-danger btn-block"(click)="onSubmit()">submit</button></td>
+                    
+
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+
+</form>
+</div>

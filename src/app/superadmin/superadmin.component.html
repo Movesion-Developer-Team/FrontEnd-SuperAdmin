@@ -1,0 +1,143 @@
+<div class="container1 d-flex flex-row">
+<div class="sidebarNavigation  ">
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-4 bg-dark sidebar">
+          <div class="sidebar">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" routerLink="/superadmin"> <br >
+                    SUPERADMIN PANEL</a>
+              </li>
+              <div class="hr"></div>
+
+              <li class="nav-item">
+                <a
+                  routerLink="/superadmin/newcompany"
+                  class="nav-link align-middle px-0"
+                >
+              CREATE NEW COMPANY 
+                </a>
+              </li>
+              <hr />
+              <li>
+                <a
+                routerLink="/superadmin/companylist"
+                class="nav-link px-0 align-middle">
+                COMPANY LIST
+                </a>
+              </li>
+              <hr />
+              <li>
+                <a
+                routerLink="/superadmin/addcategory"
+                class="nav-link px-0 align-middle">
+                ADD CATEGOORY
+                </a>
+              </li>
+              <hr />
+              <li>
+                <a
+                routerLink="/superadmin/category"
+                class="nav-link px-0 align-middle">
+                CATEGOORY LIST
+                </a>
+              </li>
+              <hr />
+              <li>
+                <a routerLink="/superadmin/addplayer" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-table"></i>
+                  <span class="ms-1 d-none d-sm-inline">ADD A PLAYER</span></a
+                >
+              </li>
+              <hr />
+
+              <li>
+                <a
+                  routerLink="/superadmin/playerlist"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <i class="fs-4 bi-bootstrap"></i>
+                  <span class="ms-1 d-none d-sm-inline"> PLAYER LIST</span></a
+                >
+                <ul
+                  class="collapse nav flex-column ms-1"
+                  id="submenu2"
+                  data-bs-parent="#menu"
+                ></ul>
+              </li>
+              <hr />
+              <li>
+                <a
+                  routerLink="/superadmin/association"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <i class="fs-4 bi-grid"></i>
+                  <span class="ms-1 d-none d-sm-inline">ASSOCIATION </span>
+                </a>
+                <ul
+                  class="collapse nav flex-column ms-1"
+                  id="submenu3"
+                  data-bs-parent="#menu"
+                ></ul>
+              </li>
+              <hr />
+              
+            <li>
+              <a routerLink="/superadmin/Voucher" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-people"></i>
+                <span class="ms-1 d-none d-sm-inline"> VOUCHERS </span>
+              </a>
+            </li>
+            <hr/>
+
+            <!-- <li>
+              <a routerLink="/superadmin/test" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-people"></i>
+                <span class="ms-1 d-none d-sm-inline"> TEST </span>
+              </a>
+            </li>
+            <hr/> -->
+            
+            <li>
+              <a routerLink="/superadmin/test1" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-people"></i>
+                <span class="ms-1 d-none d-sm-inline"> TEST1 </span>
+              </a>
+            </li>
+            <hr/>
+            
+           
+            <br><br><br>
+  
+            <li>
+              <a routerLink="/superadmin" class="nav-link mb=10 px-0 align-middle">
+                <i class="fs-3 bi-people"></i>
+                <img src="https://www.movesion.com/assets/img/logo.png" width="210" height="100" alt="" >
+              </a>
+            </li>
+            </ul>
+            <hr />
+<br>
+<br>
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <!-- Calling SignOut() Api from AuthService -->
+            <!-- <li class="nav-item"> -->
+              <!-- <a class="nav-link" (click)="authService.SignOut()"> Log out </a> -->
+            <!-- </li> -->
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="routerOutlet ">
+    <router-outlet></router-outlet>
+  </div>
+
+

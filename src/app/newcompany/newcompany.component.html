@@ -1,0 +1,145 @@
+<!-- <button class="btn btn-dark btn-block"  (click)="Remove(id)"> remove</button>
+
+<form name="form" [formGroup]="playerForm"
+(ngSubmit)="Create()" 
+>
+
+  <div class="form-group">
+    <label for="name">Company name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      [(ngModel)]="form.name"
+      #name="ngModel"
+    />
+  </div>
+
+    <div class="form-group">
+  <label for="address">address</label>
+  <input
+    type="text"
+    class="form-control"
+    name="address"
+    [(ngModel)]="form.address"
+  
+    #address="ngModel"
+  />
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfEmployees">Number of  employees</label>
+      <input
+        type="number"
+        class="form-control"
+        name="numberOfEmployees"
+        [(ngModel)]="form.numberOfEmployees"
+        #numberOfEmployees="ngModel"
+      />
+    </div>
+
+
+
+    <div class="form-group">
+ 
+    </div>
+    
+    <div class="form-group">
+        <button class="btn btn-dark btn-block"  (click)="addTask(form.name)"> Create</button>
+       
+   
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+          <br>
+          Your Company Just Created  :)
+        </div>
+
+        <div *ngIf="isLoggedIn">
+          <ul *ngFor="let item of list"  >
+            <li >
+              {{ item.name }}
+              <button id="btn1" (click)="removeTask(item.id)">remove company</button>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+      
+</form> -->
+
+
+<!-- <button class="btn btn-dark btn-block"  (click)="Remove()"> Delete</button> -->
+ 
+
+
+
+ 
+<br><br><br>
+
+
+<div class="card">
+  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+        <div class="form-group ">
+            
+          
+            <label >shortname </label>
+            <input type="text"formControlName="name" class="form-control" placeholder="name" >
+      </div>
+            <div class="form-group ">
+            <label > address </label>
+             <input type="text"formControlName="address" class="form-control" placeholder="address" > 
+            </div>
+           
+          
+            <div class="form-group">
+            <label >numberOfEmployees </label>
+            <input type="number"formControlName="numberOfEmployees" class="form-control" placeholder="numberOfEmployees" >   
+            </div>
+            
+              
+              
+              
+              <button type="submit" class="btn btn-secondary btn-block" *ngIf="!isUpdating" >Add</button>
+              <button type="submit" class="btn btn-secondary btn-block" *ngIf="isUpdating" >Update</button>
+              <div class="alert alert-success" *ngIf="isLoggedIn">
+                <br>
+                Your Company Just Created  :)
+              </div>
+              <!-- <button type="button" class="btn btn-secondary btn-block" (click)="reset()">reset</button> -->
+            <div class="form-group">
+              <!-- <button type="button" class="btn btn-danger btn-block"(click)="onSubmit()">submit</button> -->
+            </div>    
+            <!-- <button type="button" class="btn btn-secondary btn-block" >Remove</button>      -->
+   </form>
+   
+      
+ 
+   <!-- <div class="search">
+    <input type="text" [(ngModel)]="term" class="searchTerm" placeholder="which company are you looking for?"  maxlength="40" size="88">
+  </div> -->
+
+
+
+  <!-- <div class="col-md-4 mt-6 mb-6">  
+      <table class="table table-dark" >
+          <thead>
+              <tr class="black">
+                  <th> Name</th>
+                  <th> address</th>
+                  <th>  number of employees</th>
+                  <th> ACTION</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of listData | filter:term">
+                  <td><span>{{item.name}}</span></td>
+                  <td><span>{{item.address}}</span></td>
+                  <td><span>{{item.numberOfEmployees}}</span></td>
+                  
+                  <td><button type="button" class="btn btn-secondary btn-block" (click)="removeItem(item)">remove</button><br>  <button type="button" class="btn btn-danger btn-block"(click)="onSubmit()">submit</button></td>
+
+
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div> -->

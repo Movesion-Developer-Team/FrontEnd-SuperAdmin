@@ -1,0 +1,24 @@
+
+  
+  .table{
+    margin-top: 10px;
+    border: white;
+    border-radius: 10px;
+    padding: 15px;
+    width:600px;
+    margin:5px;
+    margin-left: 10px;
+  }
+  th, td {
+    border: 1px solid black;
+    padding:4px 6px;
+    color: white;
+  }
+  
+  .searchTerm {
+ padding:4px;
+ margin: 2px;
+ font-display: arial;
+ margin-top: 20px;  
+ border:2px solid black;
+  }

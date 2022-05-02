@@ -1,0 +1,24 @@
+<form [formGroup]="asscoiationForm"  (ngSubmit)="submit()">
+    <h1>choose a player </h1>
+     
+      <div class="form-group ">
+        <select  class="form-control" formControlName="playerId">
+            <option *ngFor="let player of listPlayer" [value]="player.id">
+                {{player.shortName}} {{player.id}}
+            </option> 
+        </select>
+          </div>
+    <h1>assign it to a company:</h1>
+            <div class="form-group">
+        <select class="form-control" formControlName="companyId">
+            <option *ngFor="let company of listCompany" [value]="company.id">
+                {{company.name}} {{company.id}}
+            </option>
+        </select>
+          </div>
+        <button class="btn btn-warning" type="submit">update</button>
+        <div class="alert alert-warning" *ngIf="isLoggedIn">
+            <br>
+            Your player linked to the company  :)
+        </div>
+        </form>
