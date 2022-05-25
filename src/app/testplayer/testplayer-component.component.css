@@ -1,0 +1,24 @@
+
+.body{
+    overflow: hidden;
+    position:fixed;
+    overflow:hidden;
+    max-width:100px;
+    background: black;
+}
+
+.mat-dialog-content{
+  height:100%;
+    max-width:775px;
+  
+    
+   
+
+
+}
+
+.custom-modalbox
+.mat-dialog-container{
+    background-color:black;
+}
+

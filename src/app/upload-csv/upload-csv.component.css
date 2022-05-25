@@ -1,0 +1,44 @@
+.mat-dialog-title{
+
+ 
+ min-width: 10px;
+    background-color: black;
+}
+
+
+
+
+
+
+
+.body{
+    overflow: hidden;
+    position:fixed;
+
+    max-width:100px;
+    background: black;
+}
+
+.mat-dialog-content{
+    overflow: hidden;
+    max-width:500px;
+ 
+    
+   
+
+
+}
+
+
+
+
+#discount{
+    overflow: hidden;
+    max-width:
+    600px;
+height: 100%;
+
+
+}
+
+

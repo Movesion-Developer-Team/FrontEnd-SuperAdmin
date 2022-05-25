@@ -5,7 +5,7 @@
       <div class="form-group ">
         <select  class="form-control" formControlName="playerId">
             <option *ngFor="let player of listPlayer" [value]="player.id">
-                {{player.shortName}} {{player.id}}
+                {{player.shortName}} 
             </option> 
         </select>
           </div>
@@ -13,7 +13,7 @@
             <div class="form-group">
         <select class="form-control" formControlName="companyId">
             <option *ngFor="let company of listCompany" [value]="company.id">
-                {{company.name}} {{company.id}}
+                {{company.name}} 
             </option>
         </select>
           </div>
@@ -31,7 +31,7 @@
 
 
 
-  <div class="col-md-4 mt-6 mb-6">
+  <!-- <div class="col-md-4 mt-6 mb-6">
     <div class="search">
         <input type="text" [(ngModel)]="term" class="searchTerm" placeholder="which association are you looking for?"  maxlength="40" size="84">
       </div>
@@ -44,10 +44,12 @@
                  
               </tr>
           </thead>
-          <tbody>
-              <tr *ngFor="let item of listData | filter:term |paginate: { itemsPerPage: 9, currentPage: page }">
-                  <td><span>{{item.companyId}}</span></td>
-                  <td><span>{{item.playerId}}</span></td>
+         
+         
+          <tbody> 
+              <tr *ngFor="let item of listData">
+                  <td><span>{{item.companyid}}</span></td>
+                  <td><span>{{item.playerd}}</span></td>
                   
                   <td>
                     <div class="yeer">
@@ -62,4 +64,4 @@
       </table>
       
       <pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
-  </div>
+  </div> -->

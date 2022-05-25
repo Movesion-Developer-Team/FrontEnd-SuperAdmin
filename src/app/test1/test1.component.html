@@ -1,1 +1,70 @@
-<button mat-button (click)="openDialog()">Open dialog</button>
+
+ <mat-tab-group animationDuration="2000ms"   >
+ <mat-tab label="Updating company List"> 
+  <h1 mat-dialog-title></h1>
+  <div mat-dialog-content accent-background>
+
+ 
+
+  
+  
+<div class="card" *ngIf="categoryForm">
+    <form [formGroup]="categoryForm"   (ngSubmit)="onSubmit()" >
+    <!-- <div class="form-group">
+        <label > category </label>
+               <select type="number" formControlName="categoryId" class="form-control" placeholder="categoryId" >
+                   <option *ngFor="let item of listData" [value]="item.id">
+                       {{item.name}}
+                   </option> 
+               </select>
+               </div> -->
+    <div class="form-group "> 
+
+    <label >name</label>
+    <input type="string" formControlName="Name" class="form-control" placeholder="Name" >
+
+    </div>
+
+    <div class="form-group ">
+
+    <label > description </label>
+     <input type="string" formControlName="description" class="form-control" placeholder="description" > 
+
+    </div>
+
+    
+
+      <button type="submit" class="btn btn-secondary btn-block" >update</button>
+      
+      
+    
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+      <br>
+      Your Category Just Updated   :)
+    </div>
+       </form>
+      </div>
+
+
+     
+
+      </div>
+      <div mat-dialog-content accent-background>
+      <div mat-dialog-actions>
+        <button mat-button class="btn btn-secondary btn-block" (click)="onNoClick()">Close</button>
+      </div>
+    </div>
+</mat-tab>
+
+
+
+
+  
+
+
+
+
+
+
+      
+

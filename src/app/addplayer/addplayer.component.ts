@@ -6,12 +6,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { Player } from '../models/Player';
+import { PlayerBodyDto } from '../models/PlayerBodyDto';
 import { Observable } from 'rxjs';
-import { CompanyDto } from '../models/company';
+import { CreateNewCompanyBodyDto } from '../models/company';
 import { Category } from '../models/category';
 
-
+import{CategoryBodyDto, GetAllCategoriesResponseDto} from '../models/GetAllCategoriesResponseDto'
+import { CreateNewPlayerBodyDto } from '../models/CreateNewPlayerBodyDto';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ColorPickerComponent } from 'ngx-color-picker';
+import { ColorFormats } from 'ngx-color-picker/lib/formats';
+import { DiscountTypeBodyDto, GetAllDiscountTypesResponseDto } from '../models/GetAllDiscountTypesResponseDto';
 
 @Component({
   selector: 'app-addplayer',
@@ -21,27 +26,34 @@ import { Category } from '../models/category';
 export class AddplayerComponent implements OnInit {
   playerForm!:FormGroup
   searchTerm!: string;
-  players!: Player[];
+  players!: CreateNewPlayerBodyDto[];
   term!: string;
-
-  listData:any;
+  items!:CategoryBodyDto[];
 
   isLoggedIn = false;
 
   CategoryForm!:FormGroup
   
+  color:string= "#ff0000 "
+  
+  discounts!:DiscountTypeBodyDto[];
+  
+  constructor(private fb : FormBuilder ,
+    public dialogRef: MatDialogRef<AddplayerComponent>,
+    private authService: AuthService, private http:HttpClient, private router:Router,private dialog: MatDialog, ){
 
-  constructor(private fb : FormBuilder ,private authService: AuthService, private http:HttpClient, private router:Router ){
+
    
-    this.listData=[{
-      shortName: '',
-      fullName: '',
-      playStoreLink : '',
-      appStoreLink:'',
-      linkDescription:'',
-      color :'',
-      categoryId:0
+
+
+
+
+    this.items=[{
+      id:0,
+      name:'',
+      description:''
      }];
+
 
     //  const id=this.listData
 
@@ -51,8 +63,9 @@ export class AddplayerComponent implements OnInit {
     playStoreLink:['',Validators.required],
     appStoreLink:['',Validators.required],
     linkDescription:['',Validators.required],
-    color:['',Validators.required],
-    categoryId:['',Validators.required],
+    color:[this.color ,Validators.required],
+    categoryId:[ ,Validators.required],
+    discountTypeId:[Number ,Validators.required]
     
     })
   }
@@ -60,9 +73,9 @@ export class AddplayerComponent implements OnInit {
 
 
   removeItem(element: any){
-  this.listData.forEach((value: any,index: any)=>{
+  this.items.forEach((value: any,index: any)=>{
       if(value == element )
-      this.listData.splice(index,1);
+      this.items.splice(index,1);
       
   })
 }
@@ -89,18 +102,23 @@ export class AddplayerComponent implements OnInit {
 
 
 
-  ngOnInit(): void {this.http.get<any>('https://localhost:7098/Category/GetAll')
-  .pipe(
-    map(result=>{
-      return result.unit as Category[];
+  ngOnInit(): void {
+    
+    this.http.get<GetAllCategoriesResponseDto>('https://localhost:7098/Category/GetAll').pipe(
+
+      map(res => res.categories)
+    ).subscribe(res => {
+      this.items = res;
+      console.log(res)
     })
-  )
 
-  .subscribe((data: Category[]) => {
-    this.listData = data;
-  });
-
-
+    this.http.get<GetAllDiscountTypesResponseDto>('https://localhost:7098/Discount/GetAllDiscountTypes').pipe(
+      map(res => res.discountTypes)
+    ).subscribe(res => {
+      this.discounts = res;
+    
+    })
+    
 
     // this.http.get<any>('https://localhost:7098/Player/GetAll')
     // .pipe(
@@ -113,18 +131,38 @@ export class AddplayerComponent implements OnInit {
     //   });
   }
    
-  
+
+ getdiscount(){
+
+
+
+ }
+
+
+
+
+
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   
   onSubmit(): void {
-    const { shortName,fullName,playStoreLink,appStoreLink,linkDescription,color,categoryId } = this.playerForm.value;
+    if (this.playerForm){
+    const { shortName,fullName,playStoreLink,appStoreLink,linkDescription,color,categoryId,discountTypeId } = this.playerForm.value;
     
-    this.authService.addPlayer( shortName,fullName,playStoreLink,appStoreLink,linkDescription,color,categoryId).subscribe({
+    this.authService.addPlayer( shortName,fullName,categoryId,playStoreLink,appStoreLink,linkDescription,color,discountTypeId).subscribe({
       next: data => {
-        console.log(data.shortName);
+        console.log(data.categoryId);
         this.isLoggedIn = true;
-        this.listData.push(this.playerForm.value);
-        this.playerForm.reset();
-        this.router.navigateByUrl('/superadmin/playerlist');
+        if (this.playerForm){
+          this.playerForm.reset();
+          setInterval(() => {
+         
+            this.dialog.closeAll();
+          }, 2000);
+        };
      
         
       },
@@ -132,6 +170,7 @@ export class AddplayerComponent implements OnInit {
      
       }
     });
+  }
   }
 
 

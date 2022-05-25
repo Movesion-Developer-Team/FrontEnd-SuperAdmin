@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Player } from '../models/Player';
+import { PlayerBodyDto } from '../models/PlayerBodyDto';
 
 
 
@@ -41,11 +41,11 @@ export class UserService {
 
   
   getAll() {
-    return this.http.get<Player[]>( API_URL);
+    return this.http.get<PlayerBodyDto[]>( API_URL);
 }
 
 getById(id: string) {
-    return this.http.get<Player>(`${API_URL}/${id}`);
+   return this.http.get<PlayerBodyDto>(`${API_URL}/${id}`);
 }
 
 create(params: any) {

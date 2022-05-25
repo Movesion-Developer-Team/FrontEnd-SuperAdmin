@@ -6,8 +6,9 @@ import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BaseBody } from '../models/delete.modals';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import{CompanyDto} from '../models/company'
+import{CreateNewCompanyBodyDto} from '../models/company'
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -22,11 +23,12 @@ import { Router } from '@angular/router';
 export class NewcompanyComponent implements OnInit {
  
   searchTerm!: string;
-  companies!: CompanyDto[];
+  companies!: CreateNewCompanyBodyDto[];
   term!: string;
 
+  
+
   isUpdating = false;
- 
  
   companyForm!:FormGroup
 
@@ -50,7 +52,11 @@ export class NewcompanyComponent implements OnInit {
   // }
 
 
-  constructor(private fb : FormBuilder ,private authService: AuthService, private http:HttpClient, private router:Router ) {
+  constructor(private fb : FormBuilder ,private authService: AuthService, private http:HttpClient, private router:Router,
+    
+    public dialogRef: MatDialogRef<NewcompanyComponent>,
+    
+    private dialog: MatDialog, ) {
 
     // this.listData=[{
     //   name: '',
@@ -61,7 +67,7 @@ export class NewcompanyComponent implements OnInit {
     this.companyForm=this.fb.group({
     name:['',Validators.required],
     address:['',Validators.required],
-    numberOfEmployees:['',Validators.required],
+    // numberOfEmployees:['',Validators.required],
 
     })
   }
@@ -76,8 +82,17 @@ export class NewcompanyComponent implements OnInit {
     
   reset(){this.companyForm.reset()}
 
-
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  border() {
+    //you can do whatever you want, pass in value, or variables
+    return {
+       border: '2px ',
+       backgroundColor:'',
+       display: 'block',
+       }
+    }
 
 
 
@@ -99,14 +114,22 @@ export class NewcompanyComponent implements OnInit {
   // }
   
   onSubmit(): void {
-    const { name, address,numberOfEmployees } = this.companyForm.value;
+    if (this.companyForm){
+    const { name, address} = this.companyForm.value;
    
-    this.authService.CreateNewCompany( name, address,numberOfEmployees).subscribe({
+    this.authService.CreateNewCompany( name, address).subscribe({
       next: data => {
         // console.log(data.shortName);
         this.isLoggedIn = true;
-        // this.listData.push(this.companyForm.value);
-        this.companyForm.reset();
+        if (this.companyForm){
+          this.companyForm.reset();
+          setInterval(() => {
+         
+            this.dialog.closeAll();
+          }, 2000);
+        }
+        
+      
        
         this.router.navigateByUrl('/superadmin/companylist');
         
@@ -116,44 +139,8 @@ export class NewcompanyComponent implements OnInit {
       }
     });
   }
-
 }
-  // Create(): void {
-  //   const { name, address,numberOfEmployees} = this.form;
-  //   console.log(this.form)
-  //   this.authService.CreateNewCompany(name, address,numberOfEmployees).subscribe({
-  //       next: data => {
-  //         console.log(data);
-  //         this.isLoggedIn = true;
-  //         this.isCreated= true
-  //       },
-  //     });
-  //   }
-  //   removeTask(id: BaseBody){
-  //     // this.authService.DeleteCompany(id).subscribe({
-  //     //       next: data => {
-  //     //         console.log(data);    
-              
-  //     //       },
-            
-  //     //     });
-  //      this.list=this.list.filter(item=>item.id!==id);
-  //      }
-    
+}
 
-
-    
-
-
-  //    Remove(id: number | undefined) {
-    
-  // if ( id !== undefined){
-  //     this.authService.DeleteCompany(id).subscribe({
-  //       next:data=>{
-  //         console.log(data); 
-  //       }
-  //     })
-  //   }}
-  // }
   
 

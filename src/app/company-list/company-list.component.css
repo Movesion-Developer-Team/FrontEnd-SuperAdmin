@@ -13,19 +13,22 @@
     color:red;
     background-color:#111111;
 }
-
+#btn2{
+  width: 100%;
+}
 .btn{
     color:white;
 }
 
 #btn1{
 
-    margin: 10px;
-    padding: 10px;
-    background: black;
-    color:white
+    width: 100px;
+    border: 1px solid;
+    border-radius:30%;
+    margin-left:270px;
     
 }
+
 
 .box{
     width:50%;
@@ -64,14 +67,8 @@
     border-collapse: collapse;
     
   }
-  .box{
-    width:50%;
-    border: 1px dashed rgb(0, 0, 0);
-    border-radius: 25px;
-    padding: 0px 20px 20px 20px;
-  margin-left: 50px;
-  }
-  .card{
+
+  /* .card{
     background-color: #313030;
     width: 700px;
   
@@ -79,7 +76,7 @@
     border-radius: 10px;
     padding: 15px;
   
-  }
+  } */
   
   .table{
     margin-top: 10px;
@@ -97,10 +94,25 @@
   }
   
   .searchTerm {
+
   padding:4px;
-    margin: 2px;
-    font-display: arial;
+   margin: 2px;
+  font-display: arial;
   margin-top: 20px;  
   border:2px solid black;
-  
+ 
+  border-radius:50%;
+  width: 100px;
+  border: 1px solid;
+  border-radius:30%
+
+ 
   }
+
+
+.flex{
+  display: flex;
+  flex-basis: center;
+  
+}
+

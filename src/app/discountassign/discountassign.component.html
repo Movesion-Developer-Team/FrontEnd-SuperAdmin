@@ -1,0 +1,136 @@
+<!-- <form [formGroup]="discountForm"  class= "form"  (ngSubmit)="submit()">
+    <div class="form-group" formControlName="companyId">
+<h1>Company:</h1>
+    <div class="form-group" formControlName="companyId">
+        <select class="form-control">
+            <option *ngFor="let company of listcompany" [value]="company.id">
+                {{company.id}} 
+            </option>
+        </select>
+          </div>
+        </div>
+          
+          <div class="form-group" formControlName="playerId">
+
+        
+     <h1>Players:</h1>
+     <form [formGroup]="playerForm" (ngSubmit)="getDiscount()" >
+      <div class="form-group " >
+      
+   
+        <select  class="form-control" formControlName="playerId" >
+            <option *ngFor="let item of listPlayer" [value]="item.id">
+                {{item.shortName}} 
+            </option> 
+        </select>
+          <button type="submit" class="btn btn-secondary width:10px "> submit</button>
+          </div>
+        </form>
+
+    </div>
+
+ 
+    
+
+          <h1>Discount Codes: </h1>
+          <form [formGroup]="discountcodesForm"   id="discount" formControlName="discountId">
+            <div class="form-group">
+                <label > DISCOUNT CODE : </label>
+                       <select  formControlName="discountId" class="form-control" placeholder="discount" >
+                        <option *ngFor="let item of discountList" [value]="item.id"  >
+                            {{item.name}}
+                        </option> 
+                       </select>
+                       </div>
+            </form>
+        
+        
+            <h1>how many:</h1>
+           <div class="form-group">
+            <label >numberOfDiscounts </label>
+            <input type="number"formControlName="numberOfDiscounts" class="form-control" placeholder="numberOfDiscounts" >   
+            </div>
+            
+    
+        <button class="btn btn-block btn-warning"  type="submit">ASSIGN</button>
+
+    </form> -->
+
+
+
+
+
+
+  
+
+
+
+
+    <div class="container">
+        <h1> which company?</h1>
+    
+        <form [formGroup]="discountForm"  class= "form" (ngSubmit)="submit()">
+           
+             
+              <div class="form-group ">
+                <select  class="form-control" formControlName="companyId">
+                    <option *ngFor="let item of listcompany" [value]="item.id">
+                        {{item.name}} 
+                    </option> 
+                </select>
+                  </div>
+            <h2>
+                which player?
+            </h2>
+                 <div class="form-group">
+                        <form [formGroup]="playerForm" (ngSubmit)="getDiscount()" >
+                            <div class="form-group " >
+                            
+                         
+                              <select  class="form-control" formControlName="playerId" >
+                                  <option *ngFor="let item of listPlayer" [value]="item.id">
+                                      {{item.shortName}} 
+                                  </option> 
+                              </select>
+                                <button type="submit" class="btn btn-secondary width:10px "> submit</button>
+                                </div>
+                              </form>
+                    </div>
+<h2>Related Discount ID:</h2>
+                 <div class="form-group ">
+                            <select  class="form-control" formControlName="discountId">
+                                <option *ngFor="let item of discountList" [value]="item.id">
+                                    {{item.name}} 
+                                </option> 
+                            </select>
+                 </div>
+
+               
+                 <div class="form-group">
+                  <h2 >numberOfDiscounts: </h2>
+                  <input type="number"formControlName="numberOfDiscounts" class="form-control" placeholder="numberOfDiscounts" >   
+                  </div>
+         <button class="btn btn-block btn-warning"  type="submit">ASSIGN</button>
+                </form>
+     </div>
+  <br>
+  
+<div class="container">
+    
+    <button class="btn btn-secondary " (click)="GetDiscountLimitResponseDto()">Check Availability of Discounts</button>
+    <div *ngFor="let item of data"> <li> {{item}} </li></div> 
+
+</div>
+
+  
+
+
+
+
+
+    
+
+
+
+
+        

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FlatfileMethods } from '@flatfile/angular';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  {
   title(title: any) {
     throw new Error('Method not implemented.');
   }

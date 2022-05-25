@@ -40,10 +40,21 @@ import { AssociationComponent } from './association/association.component';
 import { Test1Component } from './test1/test1.component';
 import { TestplayerComponentComponent } from './testplayer/testplayer-component.component';
 import { AssociationtestComponent } from './associationtest/associationtest.component';
+import { AssociationlistComponent } from './associationlist/associationlist.component';
+import { TestcategoryComponent } from './testcategory/testcategory.component';
 
+import { MaterialExampleModule } from './material.module';
+import { AssignUserComponent } from './assign-user/assign-user.component';
 
+import { ColorPickerModule } from 'ngx-color-picker';
+import { DiscountassignComponent } from './discountassign/discountassign.component';
+import { CSVComponent } from './csv/csv.component';
 
-
+import { DiscountComponent } from './discount/discount.component';
+import { AddCodesComponent } from './add-codes/add-codes.component';
+import { CodesComponent } from './codes/codes.component';
+import { FlatfileAdapterModule } from '@flatfile/angular';
+import { UploadCsvComponent } from './upload-csv/upload-csv.component';
 
 
 
@@ -74,6 +85,16 @@ import { AssociationtestComponent } from './associationtest/associationtest.comp
     Test1Component,
     TestplayerComponentComponent,
     AssociationtestComponent,
+    AssociationlistComponent,
+    TestcategoryComponent,
+    AssignUserComponent,
+    DiscountassignComponent,
+    CSVComponent,
+    DiscountComponent,
+    AddCodesComponent,
+    CodesComponent,
+    UploadCsvComponent,
+    
     
     
     
@@ -94,9 +115,11 @@ import { AssociationtestComponent } from './associationtest/associationtest.comp
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule 
-    
-    
+    NgxPaginationModule ,
+    MaterialExampleModule,
+    MatDialogModule,
+    ColorPickerModule,
+    FlatfileAdapterModule
     
     
     

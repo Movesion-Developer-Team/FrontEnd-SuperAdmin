@@ -1,0 +1,79 @@
+<div class="card">
+    <form [formGroup]="discountForm" (ngSubmit)="onSubmit()" [ngStyle]="border()">
+          <div class="form-group ">
+              
+            
+              <label >id </label>
+              <input type="number"formControlName="id" class="form-control" placeholder="id" >
+        </div>
+              <div class="form-group ">
+              <label > name</label>
+               <input type="string" formControlName="name" class="form-control" placeholder="name" > 
+              </div>
+             
+            
+              <div class="form-group">
+              <label >linkTermsAndConditions </label>
+              <input type="string"formControlName="linkTermsAndConditions" class="form-control" placeholder="linkTermsAndConditions" >   
+              </div>
+              
+              <div class="form-group">
+                <label >unityOfMeasurement </label>
+                <input type="string"formControlName="unityOfMeasurement" class="form-control" placeholder="unityOfMeasurement" >   
+             </div>
+
+
+             <div class="form-group">
+                    <label >discountValue </label>
+                    <input type="number" formControlName="discountValue" class="form-control" placeholder="discountValue" >   
+                    </div>
+
+
+
+            <div class="form-group">
+                        <label >initialPrice</label>
+                        <input type="number" formControlName="initialPrice" class="form-control" placeholder="linkTermsAndConditions" >   
+             </div>
+
+
+             <div class="form-group">
+                <label >finalPrice</label>
+                <input type="number" formControlName="finalPrice" class="form-control" placeholder="finalPrice" >   
+     </div>
+
+     <div class="form-group">
+        <label > DISCOUNT TYPE </label>
+               <select type="number" formControlName="discountTypeId" class="form-control" placeholder="DiscountType" >
+                   <option *ngFor="let item of discounts" [value]="item.id" >
+                       {{item.name}}
+                   </option> 
+               </select>
+               </div>
+               <div class="form-group">
+                <label > PLAYERS </label>
+                       <select type="number" formControlName="playerId" class="form-control" placeholder="playerId" >
+                        <option *ngFor="let item of listPlayer" [value]="item.id">
+                            {{item.shortName}}
+                        </option> 
+                       </select>
+                       </div>
+             
+                
+                <button type="submit" class="btn btn-secondary btn-block"  >Add</button>
+               
+                
+             
+                <span class="content-span full-width"></span>
+
+                <div class="alert alert-success" *ngIf="isLoggedIn">
+  
+                  <br>
+                  Your Discount Just Created  :)
+                </div>
+             
+              <div class="form-group">
+           
+              </div>    
+              
+     </form>
+     

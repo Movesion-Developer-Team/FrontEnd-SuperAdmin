@@ -1,9 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
+import { GenericResponseDtoAlberto } from '../generic.response';
 import { Category } from '../models/category';
+import { CreateNewPlayerBodyDto } from '../models/CreateNewPlayerBodyDto';
+import { GetAllCategoriesResponseDto } from '../models/GetAllCategoriesResponseDto';
+import { GetAllPlayerResponseDto,PlayerBodyDto } from '../models/GetAllPlayerResponseDto';
+import { PlayerMainResponseDto } from '../models/PlayerBodyDto';
+
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -12,43 +19,128 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./testplayer-component.component.css']
 })
 export class TestplayerComponentComponent implements OnInit {
-  playerForm!:FormGroup
+
+
+  
+  playerForm!:FormGroup| undefined ;
   listData:any;
   isLoggedIn = false;
-  constructor(private fb : FormBuilder ,private authService: AuthService, private http:HttpClient, private router:Router) { }
+  listPlayer!:PlayerBodyDto[];
+  id: number | undefined ;
+
+
+
+
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any,
+  public dialogRef: MatDialogRef<TestplayerComponentComponent>,
+    private dialog: MatDialog,
+  public fb: FormBuilder, 
+  private authService: AuthService, 
+  private http:HttpClient, 
+  private router:Router) {
+    console.log(data)
+    this.id = data.playerid;
+
+
+
+
+     
+    
+    this.listPlayer=[];
+  
+
+    // this.playerForm=this.fb.group({
+
+    //   id:[0,Validators.required],
+    //   shortName:['',Validators.required],
+    //   fullName:['',Validators.required],
+    //   playStoreLink:['',Validators.required],
+    //   appStoreLink:['',Validators.required],
+    //   linkDescription:['',Validators.required],
+    //   color:['',Validators.required],
+    //   categoryId:['',Validators.required],
+      
+    //   })
+    }
+   
+
+
+
+
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+
+
+
 
   ngOnInit(): void {
-
-    this.http.get<any>('https://localhost:7098/Category/GetAll')
-  .pipe(
-    map(result=>{
-      return result.unit as Category[];
+    this.getPlayer();
+    this.http.get<GetAllPlayerResponseDto>('https://localhost:7098/Player/GetAll').pipe(
+     tap(res=>{this.listPlayer=res.players}),
+     switchMap(res=>{
+       return this.http.get<PlayerMainResponseDto>('https://localhost:7098/Player/FindById?id=' +this.id)
+       .pipe(
+         map(res=> res.player)
+       );
+     })
+    ).subscribe(playerInfo => {
+   
+      // this.listCompany = res;
+      this.playerForm=this.fb.group({
+        id:[playerInfo.id,Validators.required],
+        shortName:[playerInfo.shortName,Validators.required],
+        fullName:[playerInfo.fullName,Validators.required],
+        playStoreLink:[playerInfo.playStoreLink,Validators.required],
+        appStoreLink:[playerInfo.appStoreLink,Validators.required],
+        linkDescription:[playerInfo.linkDescription,Validators.required],
+        color:[playerInfo.color,Validators.required],
+        categoryId:[playerInfo.categoryId,Validators.required],
+        
+        })
     })
-  )
 
-  .subscribe((data: Category[]) => {
-    this.listData = data;
-  });
   }
 
-
+ 
 
   onSubmit(): void {
-    // const { shortName,fullName,playStoreLink,appStoreLink,linkDescription,color,categoryId } = this.playerForm.value;
+    if(this.playerForm){
+
     
-    // this.authService.change( shortName,fullName,playStoreLink,appStoreLink,linkDescription,color,categoryId).subscribe({
-    //   next: data => {
-    //     console.log(data.shortName);
-    //     this.isLoggedIn = true;
-    //     this.listData.push(this.playerForm.value);
-    //     this.playerForm.reset();
-    //     this.router.navigateByUrl('/superadmin/playerlist');
+      const {id,
+      shortName,fullName,categoryId,playStoreLink,appStoreLink,linkDescription,color} = this.playerForm.value;
+    
+    this.authService.changeplayer(id,shortName,fullName,categoryId,playStoreLink,appStoreLink,linkDescription,color).pipe()
+    .subscribe({
+      next: data => {
+        console.log(data.shortName);
+        this.isLoggedIn = true;
+        if (this.playerForm){
+          this.playerForm.reset();
+        }
+        this.dialog.closeAll();
      
         
-  //     },
-  //     // error: err => {
+      },
+      error: err => {
      
-  //     }
-  //   });
- }
-}
+      }
+    });
+  }
+    
+  }
+  getPlayer(){
+    this.http.get<GetAllPlayerResponseDto>('https://localhost:7098/Player/GetAll').pipe(
+      map(res => res.players)
+    ).subscribe(res => {
+      this.listPlayer = res;
+    })
+
+  }
+  
+    
+  
+    
+  }
+  

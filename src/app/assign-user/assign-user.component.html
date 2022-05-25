@@ -1,0 +1,52 @@
+<div class="salar">
+
+
+
+<div class="container">
+    <h1> assign USER to COMPANY:</h1>
+
+    <form [formGroup]="assignform"  class= "form"(ngSubmit)="submit()">
+        <h1>choose a User</h1>
+         
+          <div class="form-group ">
+            <select  class="form-control" formControlName="userId">
+                <option *ngFor="let item of listData" [value]="item.id">
+                    {{item.userName}} 
+                </option> 
+            </select>
+              </div>
+        <h1>assign it to a company:</h1>
+                <div class="form-group">
+            <select class="form-control" formControlName="companyId">
+                <option *ngFor="let company of listcompany" [value]="company.id">
+                    {{company.name}} 
+                </option>
+            </select>
+              </div>
+            <button class="btn btn-block btn-warning"  type="submit">ASSIGN</button>
+            <div class="alert alert-warning" *ngIf="isLoggedIn">
+                <br>
+                Your user linked to the company  :)
+            </div>
+            </form>
+
+ </div>
+
+
+<br>
+
+
+ <div class="container1">
+    <h1> DISCOUNT ASSIGNING :</h1>
+
+<app-discountassign></app-discountassign>
+
+ </div>
+
+</div>
+
+
+
+
+
+

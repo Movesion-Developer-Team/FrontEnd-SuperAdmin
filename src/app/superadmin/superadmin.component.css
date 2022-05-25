@@ -16,8 +16,8 @@
      }
     
      .container1{
-      display: flex;
-    
+      display: grid;
+     
     }
     
 
@@ -27,7 +27,7 @@
     
     }
     .sidebarNavigation{
-      width:700px;
+      width:720px;
       display: flex;
 
      
@@ -44,5 +44,4 @@
     
     
     
-    
-    
+ 

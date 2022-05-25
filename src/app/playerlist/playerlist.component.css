@@ -22,3 +22,245 @@
  margin-top: 20px;  
  border:2px solid black;
   }
+
+  .pignation{
+    
+    margin-right: 3px;
+    border-radius: 50px;
+    cursor: pointer;
+    flex: 1;
+    font-size: 24px;
+    text-align: center;
+
+}
+.alert{
+    background: black;
+    color:red;
+    background-color:#111111;
+}
+#btn2{
+  width: 100%;
+}
+.btn{
+    color:white;
+}
+
+#btn1{
+
+    width: 100px;
+    border: 1px solid;
+    border-radius:30%;
+    margin-left:400px;
+    
+}
+
+
+.box{
+    width:50%;
+    border: 1px dashed rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 0px 20px 20px 20px;
+  margin-left: 50px;
+  }
+  .card{
+    background-color: #313030;
+    width: 700px;
+    border: white;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  .table{
+    margin-top: 10px;
+    border: white;
+    border-radius: 10px;
+    padding: 15px;
+    width:600px;
+    margin:5px;
+    margin-left: 10px;
+  }
+  
+
+  th, td {
+    border: 1px solid black;
+    padding:4px 6px;
+    color: white;
+  }
+  table {
+    border: 1px solid black;
+    font: 16px "Open Sans", Helvetica, Arial, sans-serif;
+    border-spacing: 0;
+    border-collapse: collapse;
+    
+  }
+
+  /* .card{
+    background-color: #313030;
+    width: 700px;
+  
+    border: white;
+    border-radius: 10px;
+    padding: 15px;
+  
+  } */
+  
+  .table{
+    margin-top: 10px;
+    border: white;
+    border-radius: 10px;
+    padding: 15px;
+    width:610px;
+    margin:5px;
+    margin-left: 10px;
+  }
+  th, td {
+    border: 1px solid black;
+    padding:4px 6px;
+    color: white;
+  }
+  
+  .searchTerm {
+
+  padding:4px;
+   margin: 2px;
+  font-display: arial;
+  margin-top: 20px;  
+  border:2px solid black;
+ 
+  border-radius:50%;
+  width: 100px;
+  border: 1px solid;
+  border-radius:30%
+
+ 
+  }
+
+
+.flex{
+  display: flex;
+  flex-basis: center;
+  
+}
+
+.pignation{
+    
+  margin-right: 3px;
+  border-radius: 50px;
+  cursor: pointer;
+  flex: 1;
+  font-size: 24px;
+  text-align: center;
+
+}
+.alert{
+  background: black;
+  color:red;
+  background-color:#111111;
+}
+#btn2{
+width: 100%;
+}
+.btn{
+  color:white;
+}
+
+#btn1{
+
+  width: 100px;
+  border: 1px solid;
+  border-radius:30%;
+  margin-left:690px;
+  
+ 
+}
+
+
+.box{
+  width:50%;
+  border: 1px dashed rgb(0, 0, 0);
+  border-radius: 25px;
+  padding: 0px 20px 20px 20px;
+margin-left: 50px;
+}
+.card{
+  background-color: #313030;
+  width: 700px;
+  border: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+.table{
+  margin-top: 10px;
+  border: white;
+  border-radius: 10px;
+  padding: 15px;
+  width:600px;
+  margin:5px;
+  margin-left: 1px;
+}
+#table{
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid black;
+  padding:4px 6px;
+  color: white;
+}
+table {
+  border: 1px solid black;
+  font: 16px "Open Sans", Helvetica, Arial, sans-serif;
+  border-spacing: 0;
+  border-collapse: collapse;
+  
+}
+
+/* .card{
+  background-color: #313030;
+  width: 700px;
+
+  border: white;
+  border-radius: 10px;
+  padding: 15px;
+
+} */
+
+.table{
+  margin-top: 10px;
+  border: white;
+  border-radius: 10px;
+  padding: 15px;
+  width:610px;
+  margin:5px;
+  margin-left: 10px;
+}
+th, td {
+  border: 1px solid black;
+  padding:4px 6px;
+  color: white;
+}
+
+.searchTerm {
+
+padding:4px;
+ margin: 0px;
+font-display: arial;
+margin-top: 20px;  
+border:2px solid black;
+
+border-radius:50%;
+width: 100px;
+border: 1px solid;
+border-radius:30%
+
+
+}
+
+
+.flex{
+display: flex;
+flex-basis: baseline;
+
+}
+
+
+

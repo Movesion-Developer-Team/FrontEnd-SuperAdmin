@@ -22,7 +22,14 @@ import { VoucherComponent } from './voucher/voucher.component';
 import { AssociationComponent } from './association/association.component';
 
 import { Test1Component } from './test1/test1.component';
+import { AssociationlistComponent } from './associationlist/associationlist.component';
 
+import { TestcategoryComponent } from './testcategory/testcategory.component';
+import { AssignUserComponent } from './assign-user/assign-user.component';
+import { DiscountassignComponent } from './discountassign/discountassign.component';
+import { DiscountComponent } from './discount/discount.component';
+import { AddCodesComponent } from './add-codes/add-codes.component';
+import { CodesComponent } from './codes/codes.component';
 
 
 const routes: Routes = [
@@ -46,7 +53,15 @@ const routes: Routes = [
     {path:'Voucher', component:VoucherComponent},
     {path:'test', component:TestComponent},
     {path:'test1', component:Test1Component},
+    {path:'testcategory',component:TestcategoryComponent},
     {path:'association',component:AssociationComponent},
+    {path:'associationlist',component:AssociationlistComponent},
+    {path:'assignuser',component:AssignUserComponent},
+    {path:'discountassign', component:DiscountassignComponent},
+    {path:'discount', component:DiscountComponent},
+    {path:'addCodesComponent', component:AddCodesComponent},
+    {path:'Codes', component:CodesComponent},
+ 
 
 
   

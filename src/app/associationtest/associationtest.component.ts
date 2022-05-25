@@ -5,8 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { associate } from '../models/associate';
-import { CompanyDto, GenericResponseDto } from '../models/company';
-import { Player } from '../models/Player';
+import { CreateNewCompanyBodyDto } from '../models/company';
+import { PlayerBodyDto } from '../models/PlayerBodyDto';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -17,8 +17,8 @@ import { AuthService } from '../_services/auth.service';
 export class AssociationtestComponent implements OnInit {
   listData!:associate[];
 
-  listPlayer:Player[] = [];
-  listCompany:CompanyDto[] = [];
+  listPlayer:PlayerBodyDto[] = [];
+  listCompany:CreateNewCompanyBodyDto[] = [];
   isLoggedIn = false;
   asscoiationForm!:FormGroup;
   constructor(private dialog:MatDialog, private fb : FormBuilder,private authService: AuthService, private http:HttpClient, private router:Router ) { }
@@ -30,10 +30,10 @@ export class AssociationtestComponent implements OnInit {
     this.http.get<any>('https://localhost:7098/Player/GetAll')
     .pipe(
       map(result=>{
-        return result.unit as Player[];
+        return result.unit as PlayerBodyDto[];
       })
     )
-      .subscribe((data: Player[]) => {
+      .subscribe((data: PlayerBodyDto[]) => {
         this.listPlayer = data;
       });
      
@@ -42,17 +42,17 @@ export class AssociationtestComponent implements OnInit {
       this.http.get<any>('https://localhost:7098/Company/GetAll')
       .pipe(
         map(result=>{
-          return result.unit as CompanyDto[];
+          return result.unit as CreateNewCompanyBodyDto[];
         })
       )
-      .subscribe((data: CompanyDto[]) => {
+      .subscribe((data: CreateNewCompanyBodyDto[]) => {
         this.listCompany = data;
       });
 
 
-      this.http.get<GenericResponseDto<associate[]>>('https://localhost:7098/Company/GetAll')
+      this.http.get<associate[]>('https://localhost:7098/Company/GetAll')
       .pipe(
-        map(result => result.unit)
+        map(result => result)
       )
   
       .subscribe((data: associate[]) => {
@@ -67,7 +67,7 @@ export class AssociationtestComponent implements OnInit {
 
     this.authService.associate(companyId,playerId).subscribe({
       next: data => {
-        console.log(data.companyId);
+        // console.log(data.companyId);
         
      
         

@@ -6,10 +6,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { Player } from '../models/Player';
+import { PlayerBodyDto } from '../models/PlayerBodyDto';
 import { Observable } from 'rxjs';
-import { CompanyDto } from '../models/company';
+import { CreateNewCompanyBodyDto } from '../models/company';
 import { Category } from '../models/category';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -26,7 +27,10 @@ export class AddcategoryComponent implements OnInit {
 
 
 
-  constructor(private fb : FormBuilder ,private authService: AuthService, private http:HttpClient, private router:Router ){ 
+  constructor(private fb : FormBuilder ,
+
+     public dialogRef: MatDialogRef<AddcategoryComponent>,
+    private authService: AuthService, private http:HttpClient, private router:Router, private dialog: MatDialog, ){ 
    
   this.categoryForm=this.fb.group({
     Name:['',Validators.required],
@@ -38,26 +42,32 @@ export class AddcategoryComponent implements OnInit {
 
   ngOnInit(): void {
   }
-   
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   onSubmit(): void {
-    const { Name, Description } = this.categoryForm.value;
+    if (this.categoryForm){
+    const { id,Name, Description } = this.categoryForm.value;
    
     this.authService.CreateNewCategory(Name, Description).subscribe({
       next: data => {
         console.log(data.Name);
         this.isLoggedIn = true;
         
-        this.categoryForm.reset();
-       
-        this.router.navigateByUrl('/superadmin/category');
-        
+        if (this.categoryForm){
+          this.categoryForm.reset();
+          setInterval(() => {
+         
+            this.dialog.closeAll();
+          }, 2000);
+        }
       },
       error: err => {
      
       }
     });
 
-    
+    }
   }
 
 }

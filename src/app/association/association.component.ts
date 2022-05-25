@@ -3,13 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
-import { CompanyDto } from '../models/company';
-import { Player } from '../models/Player';
+import { CreateNewCompanyBodyDto } from '../models/company';
+
 import { AuthService } from '../_services/auth.service';
-import { associate, GenericResponseDto } from '../models/associate';
+import { associate} from '../models/associate';
 import { MatDialog } from '@angular/material/dialog';
 import { TestComponent } from '../test/test.component';
 import { AssociationtestComponent } from '../associationtest/associationtest.component';
+import { GetAllPlayerResponseDto,PlayerBodyDto } from '../models/GetAllPlayerResponseDto';
+import { CreateNewPlayerBodyDto } from '../models/CreateNewPlayerBodyDto';
+import { GetAllCompaniesResponseDto } from '../models/GetAllCompaniesResponseDto';
+// import { AddPlayerToCompanyBodyDto } from '../models/AddPlayerToCompanyBodyDto';
+// import { createnewplayertocompany } from '../models/AddPlayerToCompanyBodyDto';
 
 
 @Component({
@@ -20,17 +25,23 @@ import { AssociationtestComponent } from '../associationtest/associationtest.com
 export class AssociationComponent implements OnInit {
   asscoiationForm!:FormGroup;
   
+  listPlayer!:PlayerBodyDto[];
 
-  listPlayer:Player[] = [];
-  listCompany:CompanyDto[] = [];
+  listCompany!:CreateNewCompanyBodyDto[];
   
   isLoggedIn = false;
 
-
   term!: string;
 
-  listData!:associate[]
+  // listData!:AddPlayerToCompanyBodyDto[];
+  
+  // listaddcompanytoplayer!: associate[];
+
+//  listplayertocompany!:createnewplayertocompany[];
+
   page: any;
+  
+  
   isShown: boolean = false ;
 
  
@@ -51,42 +62,48 @@ this.listCompany=[];
 
   ngOnInit(): void {
   
+   this.getPlayer();
+
+   this.getcompany();
    
+  //  this.getplayertocompany();
 
-    this.http.get<any>('https://localhost:7098/Player/GetAll')
-    .pipe(
-      map(result=>{
-        return result.unit as Player[];
-      })
-    )
-      .subscribe((data: Player[]) => {
-        this.listPlayer = data;
-      });
-     
-
-
-      this.http.get<any>('https://localhost:7098/Company/GetAll')
-      .pipe(
-        map(result=>{
-          return result.unit as CompanyDto[];
-        })
-      )
-      .subscribe((data: CompanyDto[]) => {
-        this.listCompany = data;
-      });
-
-
-      this.http.get<GenericResponseDto<associate[]>>('https://localhost:7098/Company/GetAll')
-      .pipe(
-        map(result => result.unit)
-      )
-  
-      .subscribe((data: associate[]) => {
-        this.listData = data;
-      });
-
-      
   }
+
+
+
+  getPlayer(){
+    this.http.get<GetAllPlayerResponseDto>('https://localhost:7098/Player/GetAll').pipe(
+      map(res => res.players)
+    ).subscribe(res => {
+      this.listPlayer = res;
+    })
+    
+  }
+  getcompany(){
+    this.http.get<GetAllCompaniesResponseDto>('https://localhost:7098/Company/GetAll').pipe(
+      map(res => res.companies)
+    ).subscribe(res => {
+      this.listCompany = res;
+    })
+
+  }
+
+
+
+
+
+  // getplayertocompany (){
+  //   this.http.get<AddPlayerToCompanyBodyDto>('https://localhost:7098/Company/GetAllPlayers').pipe(
+  //     map(res => res.addplayertocompany)
+  //   ).subscribe(res => {
+  //     this.listplayertocompany = res;
+  //   })
+  // }
+
+
+
+
 
   modalContent = false;
   openSortingModal(){
@@ -97,14 +114,14 @@ this.listCompany=[];
    this.modalContent = false;
   }
 
-  removeItem(element: any ){
+  // removeItem(element: any ){
       
-    this.listData.forEach((value: any,index: any)=>{
-        if(value == element )
-        this.listData.splice(index,1);
-    })
+  //   this.listData.forEach((value: any,index: any)=>{
+  //       if(value == element )
+  //       this.listData.splice(index,1);
+  //   })
    
-  }
+  // }
 
   onClickForm(){
     this.dialog.open(AssociationtestComponent, {
@@ -126,7 +143,7 @@ this.listCompany=[];
 
     this.authService.associate(companyId,playerId).subscribe({
       next: data => {
-        console.log(data.companyId);
+        console.log(this.asscoiationForm.value)
         
      
         

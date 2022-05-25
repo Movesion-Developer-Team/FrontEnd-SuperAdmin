@@ -86,16 +86,24 @@
 
 
 
-<div class="card">
+<div class="card" *ngIf="playerForm">
     <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label > categoryId </label>
                    <select type="number" formControlName="categoryId" class="form-control" placeholder="categoryId" >
-                       <option *ngFor="let category of listData" [value]="category.id">
-                           {{category.name}}
+                       <option *ngFor="let item of items" [value]="item.id">
+                           {{item.name}}
                        </option> 
                    </select>
                    </div>
+                   <div class="form-group">
+                    <label > Discount type </label>
+                           <select type="number" formControlName="discountTypeId" class="form-control" placeholder="DiscountType" >
+                               <option *ngFor="let item of discounts" [value]="item.id" >
+                                   {{item.name}}
+                               </option> 
+                           </select>
+                           </div>
 
 
                    <!-- <div class="form-group ">
@@ -136,7 +144,8 @@
                     
                 <div class="form-group">
                 <label > color </label>
-                <input type="number" formControlName="color" class="form-control" placeholder="color" >
+                <!-- <input type="string" formControlName="color" class="form-control" placeholder="color" > -->
+                <input [(colorPicker)]="color" [style.background]="color" onclick="color"   type="string" formControlName="color" class="form-control" placeholder="color" />
                 </div>
                 <!-- <div class="form-group">
                     <label > Category </label>
@@ -153,7 +162,7 @@
                        </p>
                        </form>
                 </div> -->
-
+          
 
                 <button type="submit" class="btn btn-secondary btn-block" >Add</button>
 
@@ -211,3 +220,16 @@
 
 </form>
 </div>
+<div mat-dialog-actions>
+    <button mat-button class="btn btn-secondary btn-block" (click)="onNoClick()">Close</button>
+  </div>
+
+
+
+
+
+
+
+
+
+

@@ -2,45 +2,77 @@
 
 
 
-  <div class="col-md-4 mt-6 mb-6">
-    <div class="search">
-        <input type="text" [(ngModel)]="term" class="searchTerm" placeholder="which company are you looking for?"  maxlength="40" size="84">
-      </div>
-      <table class="table table-dark" >
-          <thead>
+  <div class="col-md-12 mt-4 mb-2">
+      <div class="flex">
+        <div>
+
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+            <span matPrefix> </span>
+            <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "term">
+            <button matSuffix mat-button><mat-icon >search</mat-icon></button>
+            </mat-form-field>
+            <br/>
+            {{search}}
+            </form>
+
+          
+        </div>
+      
+
+  
+         <div>   
+
+        <button class="btn-outline-dark" id="btn1" (click)="onClickButton()"> New Company</button>
+
+         </div>
+
+
+
+         </div>
+
+      <table class="table table-striped table-dark table-hover" >
+          <thead  class="thead-dark">
               <tr class="black">
-                  <th> Name</th>
-                  <th> address</th>
-                  <th>  number of employees</th>
+                  <th> <b>NAME</b></th>
+                  <th> ADDRESS</th>
+                  <th>  NUMBER OF EMPLOYEES</th>
                   <th> ACTION</th>
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let item of listData | filter:term |paginate: { itemsPerPage: 9, currentPage: page }">
-                  <td><span>{{item.name}}</span></td>
+         
+              <tr *ngFor="let item of listData | filter:term |paginate: { itemsPerPage: 9, currentPage: page }" >
+                  <td>{{item.name}}</td>
                   <td><span>{{item.address}}</span></td>
                   <td><span>{{item.numberOfEmployees}}</span></td>
-                  <td>
-                      <div class="yeer">
-                        <!-- <button class="hl-sort" (click)="openSortingModal()">
-                            edit
-                            </button> -->
-                            <!-- <div class="modal-container" *ngIf="modalContent"> -->
-                                <button type="button" class="hl-sort" (click)="removeItem (item )">remove</button><br> <br>
-                                <button type="button" class="hl-sort" (click)="onClickForm(item)">update</button> <br>
-                              <!-- <button class="hl-sort" (click)="closeModal()">Close</button> -->
-                            </div>
-                   
-                      <!-- </div> -->
-                    <!-- <button type="button" class="btn btn-secondary btn-danger" (click)="remove(id)">delete</button> </td> -->
-                    <!-- <button (click)="toggleShow()" type="checkbox" >show/hide</button> -->
-<!-- <button (click)="salar()"  >salar</button> -->
-
-
-                  
+                 <td>
+                                    <button type="button" id="btn2" class="hl-sort btn btn-danger" (click)="removeItem(item)">Remove</button ><br> <br>
+                                
+                                   <button type="button " id="btn2" class="hl-sort btn btn-warning" (click)="onClickForm(item)">Edit</button> <br>
+                            </td>
+                           
               </tr>
           </tbody>
       </table>
       
       <pagination-controls class="pagination " (pageChange)="page = $event"></pagination-controls>
   </div>
+
+
+  <!-- <mat-tab-group>
+    <mat-tab label="First"> Content 1 </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>
+
+
+<form class="example-form">
+<mat-form-field class="example-full-width">
+<span matPrefix> </span>
+<input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
+<button matSuffix mat-button><mat-icon >search</mat-icon></button>
+</mat-form-field>
+<br/>
+{{search}}
+</form> -->
