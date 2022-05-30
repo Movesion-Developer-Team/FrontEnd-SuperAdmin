@@ -3,8 +3,6 @@ export interface CreateNewCompanyBodyDto{
  name:string ;
  address:string;
 
- 
-
      
 }
 

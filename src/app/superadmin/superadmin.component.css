@@ -22,13 +22,14 @@
     
 
     .sidebar{
-      height: 100vh;
+      height:100vh;
       display: flex;
     
     }
     .sidebarNavigation{
-      width:720px;
+      width:730px;
       display: flex;
+      height:100%;
 
      
     
