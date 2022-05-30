@@ -1,1 +1,46 @@
-<p>add-codes works!</p>
+<table class="table table-striped table-dark table-hover" >
+    <thead  class="thead-dark">
+        <tr class="black">
+            <th> <b>NAME</b></th>
+            <th> ADDRESS</th>
+       
+            <th> ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+   
+        <tr *ngFor="let item of listData " >
+            <td>{{item.name}}</td>
+            <td><span>{{item.address}}</span></td>
+            <div hidden>
+              <td>{{item.id}}</td>
+            </div>
+       
+           <td>
+            <button type="button" mat-stroked-button color="warn" (click)="onClickForm(item)"><mat-icon>edit</mat-icon>See players</button>
+            
+              
+
+            
+
+
+        </td>
+
+    <td>
+        
+    </td>
+
+                     
+        </tr>
+
+        
+    </tbody>
+
+
+<table>
+    <div *ngFor="let item of GetAllPlayersForOneCompanyList">
+        {{item.shortName}}
+    </div>
+</table>
+ 
+</table>

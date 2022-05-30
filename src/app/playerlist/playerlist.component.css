@@ -1,5 +1,4 @@
 
-  
   .table{
     margin-top: 10px;
     border: white;
@@ -7,7 +6,7 @@
     padding: 15px;
     width:600px;
     margin:5px;
-    margin-left: 10px;
+   
   }
   th, td {
     border: 1px solid black;
@@ -168,17 +167,18 @@ width: 100%;
   width: 100px;
   border: 1px solid;
   border-radius:30%;
-  margin-left:690px;
+  margin-left:700px;
+
   
  
 }
 
 
 .box{
-  width:50%;
+  width:20%;
   border: 1px dashed rgb(0, 0, 0);
-  border-radius: 25px;
-  padding: 0px 20px 20px 20px;
+  border-radius: 1px;
+  padding: 0px 20px 10px 10px;
 margin-left: 50px;
 }
 .card{
@@ -186,13 +186,13 @@ margin-left: 50px;
   width: 600px;
   border: white;
   border-radius: 10px;
-  padding: 15px;
+  padding: 1px;
 }
 .table{
   margin-top: 10px;
   border: white;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 12px;
+  padding: 1px;
   width:600px;
   margin:5px;
   margin-left: 1px;
@@ -203,12 +203,12 @@ margin-left: 50px;
 
 th, td {
   border: 1px solid black;
-  padding:4px 6px;
+  padding:2px 2px;
   color: white;
 }
 table {
   border: 1px solid black;
-  font: 16px "Open Sans", Helvetica, Arial, sans-serif;
+  font: 15px "Open Sans", Helvetica, Arial, sans-serif;
   border-spacing: 0;
   border-collapse: collapse;
   
@@ -228,9 +228,9 @@ table {
   margin-top: 10px;
   border: white;
   border-radius: 10px;
-  padding: 15px;
+  padding: 1px;
   width:610px;
-  margin:5px;
+  margin:2px;
   margin-left: 10px;
 }
 th, td {
@@ -264,3 +264,10 @@ flex-basis: baseline;
 
 
 
+.container1{
+
+margin-left: 0;
+
+
+
+}

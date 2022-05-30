@@ -3,7 +3,7 @@
     <a href="#" class="navbar-brand">Movesion</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
+        <a href="/home" class="nav-link" routerLink="home"><mat-icon>home</mat-icon></a>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
@@ -21,7 +21,7 @@
         <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
       </li> -->
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a href="/login" class="nav-link" routerLink="login"><span class="material-icons">app_registration</span></a>
       </li>
     </ul>
 
@@ -30,7 +30,7 @@
         <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
       </li>
       <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+        <a href class="nav-link" (click)="logout()"> <mat-icon>exit_to_app</mat-icon></a>
       </li>
     </ul>
   </nav>
