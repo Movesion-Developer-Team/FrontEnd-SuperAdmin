@@ -1,6 +1,6 @@
 h1 {
     margin-top:20%;
-    margin-left:15%;
+    margin-left:12%;
     font-size: 32px;
     color: red;
 
@@ -36,13 +36,13 @@ body {
   
   @keyframes move {
     0% {
-      transform: translate(-5%, 0);
+      transform: translate(-3%, 0);
     }
     50% {
       text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
     }
     100% {
-      transform: translate(10%, 0);
+      transform: translate(5%, 0);
     }
   }
   
