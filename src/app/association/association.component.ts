@@ -6,7 +6,7 @@ import { map } from 'rxjs';
 import { CreateNewCompanyBodyDto } from '../models/company';
 
 import { AuthService } from '../_services/auth.service';
-import { associate} from '../models/associate';
+import { AddPlayerTocompanyBodyDto} from '../models/associate';
 import { MatDialog } from '@angular/material/dialog';
 import { TestComponent } from '../test/test.component';
 import { AssociationtestComponent } from '../associationtest/associationtest.component';

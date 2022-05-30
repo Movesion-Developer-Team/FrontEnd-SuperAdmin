@@ -36,7 +36,7 @@
               <tr class="black">
                   <th> <b>NAME</b></th>
                   <th> ADDRESS</th>
-                  <th>  NUMBER OF EMPLOYEES</th>
+             
                   <th> ACTION</th>
               </tr>
           </thead>
@@ -45,11 +45,15 @@
               <tr *ngFor="let item of listData | filter:term |paginate: { itemsPerPage: 9, currentPage: page }" >
                   <td>{{item.name}}</td>
                   <td><span>{{item.address}}</span></td>
-                  <td><span>{{item.numberOfEmployees}}</span></td>
+                  <div hidden>
+                    <td>{{item.id}}</td>
+                  </div>
+             
                  <td>
-                                    <button type="button" id="btn2" class="hl-sort btn btn-danger" (click)="removeItem(item)">Remove</button ><br> <br>
-                                
-                                   <button type="button " id="btn2" class="hl-sort btn btn-warning" (click)="onClickForm(item)">Edit</button> <br>
+                                    <div class="d-flex align-items-center">
+          <button type="button" mat-stroked-button color="basic" class="mr-1" (click)="onRemoveCompany(item)"><mat-icon>delete</mat-icon>Remove</button>
+          <button type="button" mat-stroked-button color="warn" (click)="onClickForm(item)"><mat-icon>edit</mat-icon>Edit</button>
+          </div>
                             </td>
                            
               </tr>

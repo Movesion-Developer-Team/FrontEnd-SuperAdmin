@@ -4,8 +4,9 @@
 body{
 	margin:0;
 	color:red;
-	background-color: #595757;
+	background-color: #989898;
 	font:600 16px/18px 'Open Sans',sans-serif;
+	background-image: url(./images/mcity_bg_login.jpg);
 }
 
 html, body { height: 100%; }

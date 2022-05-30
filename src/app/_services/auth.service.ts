@@ -11,7 +11,7 @@ import {  CreateNewCompanyBodyDto } from '../models/company';
 import { ChangeDetectionStrategy } from '@angular/compiler';
 import { GeneralResponseDto } from '../models/GeneralResponseDto';
 import { Category } from '../models/category';
-import { associate } from '../models/associate';
+import { AddPlayerTocompanyBodyDto } from '../models/associate';
 import { CreateNewPlayerBodyDto } from '../models/CreateNewPlayerBodyDto';
 import { AddPlayerToCompanyBodyDto } from '../models/AddPlayerToCompanyBodyDto';
 import { companyBodyDto } from '../models/companyBodyDto';
@@ -182,14 +182,43 @@ change( id:number, name:string, address:string ):Observable<companyBodyDto>{
 
 }
 
-associate(companyId:number,playerId:number):Observable<AddPlayerToCompanyBodyDto>{
-  return this.http.post<AddPlayerToCompanyBodyDto>(Company_API+ 'Company/AddPlayerToCompany',{
+associate(companyId:number,playerId:number):Observable<AddPlayerTocompanyBodyDto>{
+  return this.http.post<AddPlayerTocompanyBodyDto>(Company_API+ 'Player/AssignPlayerToCompany',{
    companyId,
    playerId
 
   },httpOptions);
 }
 
+
+
+
+
+
+
+
+
+AssignDiscountToCompany(companyId:number,discountId:number):Observable<BaseResponse>{
+  return this.http.post<BaseResponse>(Company_API+ 'Discount/AssignDiscountToCompany',{
+   companyId,
+    discountId
+
+  },httpOptions);
+}
+
+
+AssignDiscountCodesToCompanyBodyDto(discountId:number, companyId:number ,numberOfDiscounts:number,price:number):Observable <AssignDiscountCodesToCompanyBodyDto>{
+  return this.http.post<AssignDiscountCodesToCompanyBodyDto>(Company_API+'Discount/AssignDiscountCodesToCompany',{
+
+discountId,
+companyId,
+numberOfDiscounts,
+price
+
+
+
+  },httpOptions);
+}
 
 
 

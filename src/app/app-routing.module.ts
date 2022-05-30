@@ -30,10 +30,11 @@ import { DiscountassignComponent } from './discountassign/discountassign.compone
 import { DiscountComponent } from './discount/discount.component';
 import { AddCodesComponent } from './add-codes/add-codes.component';
 import { CodesComponent } from './codes/codes.component';
-
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  {path:'mainpage', component: MainpageComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   // { path: 'profile', component: ProfileComponent },

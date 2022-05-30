@@ -2,9 +2,10 @@ export interface GetAllPlayersForCurrentCompanyResponseDto{
     message:string
     players: players[]
 }
+
+
+
 export interface players{
-
-
     id:number;
     shortName: string;
     fullName: string;
@@ -13,8 +14,4 @@ export interface players{
     appStoreLink: string;
     linkDescription: string;
     color: string;
-    
-
-
-
 }

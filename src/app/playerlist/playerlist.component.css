@@ -74,8 +74,8 @@
     border: white;
     border-radius: 10px;
     padding: 15px;
-    width:600px;
-    margin:5px;
+    min-width:600px;
+ margin-left: 100px;
     margin-left: 10px;
   }
   
@@ -183,7 +183,7 @@ margin-left: 50px;
 }
 .card{
   background-color: #313030;
-  width: 700px;
+  width: 600px;
   border: white;
   border-radius: 10px;
   padding: 15px;

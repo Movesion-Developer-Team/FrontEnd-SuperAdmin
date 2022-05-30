@@ -1,16 +1,18 @@
-<mat-tab-group animationDuration="2000ms"    >
+
+
+<mat-tab-group animationDuration="2000ms"  class="tab"  >
     <mat-tab label="PLEASE CHOOSE A PLAYER FIRST:"> 
       <h1 mat-dialog-title></h1>
       <div mat-dialog-content > 
       
         <form [formGroup]="playerForm" (ngSubmit)="onSubmit()" >
             <div class="form-group">
-                <label > PLAYER: </label>
-                       <select type="number" formControlName="playerId" class="form-control" placeholder="playerId" >
-                        <option *ngFor="let item of listPlayer" [value]="item.id"  >
-                            {{item.shortName}}
-                        </option> 
-                       </select>
+                <label > PLAYER:    </label> 
+                       <mat-select type="number" formControlName="playerId" class="form-control" placeholder="playerId" >   
+                         <mat-option *ngFor="let item of listPlayer" [value]="item.id"  >
+                      {{item.shortName}}
+                        </mat-option> 
+                       </mat-select>
                        </div>
             
             
@@ -25,7 +27,7 @@
   
     </mat-tab>
   
-    <mat-tab  label="CHOOSE A DISCOUNT CODE (CSV UPLOAD)" *ngIf="isSubmitted"> 
+    <mat-tab  label="CHOOSE A DISCOUNT CODE (CSV UPLOAD)" *ngIf="isSubmitted" class="btn btn-primary"> 
       
        
        
@@ -34,11 +36,11 @@
         <form [formGroup]="discountForm" (ngSubmit)="Submit()"  id="discount">
             <div class="form-group">
                 <label > DISCOUNT CODE : </label>
-                       <select type="number"  formControlName="discountId" class="form-control" placeholder="discount" >
-                        <option *ngFor="let item of discountList" [value]="item.id"  >
+                       <mat-select type="number"  formControlName="discountId" class="form-control" placeholder="discount" >
+                        <mat-option *ngFor="let item of discountList" [value]="item.id"  >
                             {{item.name}}
-                        </option> 
-                       </select>
+                        </mat-option> 
+                       </mat-select>
                        </div>
 
 
@@ -61,25 +63,19 @@
                     </div>
                  
                        <button type="submit" class="btn btn-secondary btn-block" > submit discount</button>
-
-
-                       <div mat-dialog-actions>
+                       <!-- <div mat-dialog-actions>
                         <button mat-button class="btn btn-secondary btn-block" (click)="onNoClick()">Close</button>
-                      </div>
-                       
+                      </div> -->
+                      
                     </form>
-           
-  
-         
-  
-  
-  
-  
-  
+                  
+                   
+                  
     </mat-tab>
   
   
   
+   
   
   
   
@@ -88,10 +84,10 @@
   
   
   
-  
-  
-    
+
   
   </mat-tab-group>
 
-  
+  <div mat-dialog-actions>
+    <button mat-button class="btn btn-secondary  " (click)="onNoClick()">close</button>
+  </div>

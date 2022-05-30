@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
-import { associate } from '../models/associate';
+import { AddPlayerTocompanyBodyDto } from '../models/associate';
 import { CreateNewCompanyBodyDto } from '../models/company';
 import { PlayerBodyDto } from '../models/PlayerBodyDto';
 import { AuthService } from '../_services/auth.service';
@@ -15,7 +15,7 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./associationtest.component.css']
 })
 export class AssociationtestComponent implements OnInit {
-  listData!:associate[];
+  listData!:AddPlayerTocompanyBodyDto[];
 
   listPlayer:PlayerBodyDto[] = [];
   listCompany:CreateNewCompanyBodyDto[] = [];
@@ -50,12 +50,12 @@ export class AssociationtestComponent implements OnInit {
       });
 
 
-      this.http.get<associate[]>('https://localhost:7098/Company/GetAll')
+      this.http.get<AddPlayerTocompanyBodyDto[]>('https://localhost:7098/Company/GetAll')
       .pipe(
         map(result => result)
       )
   
-      .subscribe((data: associate[]) => {
+      .subscribe((data: AddPlayerTocompanyBodyDto[]) => {
         this.listData = data;
       });
   }

@@ -104,7 +104,7 @@ onClick(){
 }
 
 
-  removeItem(element:companyBodyDto) {
+  onRemoveCompany(element:companyBodyDto) {
     //   
   if(confirm('Are you sure you want to remove')){
       this.listData.forEach((value: any,index: any)=>{

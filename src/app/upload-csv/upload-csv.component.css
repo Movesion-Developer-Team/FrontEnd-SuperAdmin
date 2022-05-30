@@ -21,7 +21,7 @@
 
 .mat-dialog-content{
     overflow: hidden;
-    max-width:500px;
+    max-width:600px;
  
     
    
@@ -34,9 +34,9 @@
 
 #discount{
     overflow: hidden;
-    max-width:
-    600px;
-height: 100%;
+    max-width:600px;
+    height: 100%;
+    overflow-y: none;
 
 
 }

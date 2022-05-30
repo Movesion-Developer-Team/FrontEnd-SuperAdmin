@@ -1,4 +1,4 @@
-export interface associate {
+export interface AddPlayerTocompanyBodyDto {
     companyId:number;
     playerId:number;
 

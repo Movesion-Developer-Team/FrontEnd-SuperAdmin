@@ -1,6 +1,6 @@
 
  
-<div class="col-md-10 mt-6 ">
+<div class="col-md-8 mt-6 ">
 
     <div class="flex">
         <div>
@@ -23,7 +23,7 @@
          <div>   
 
         <button class="btn-outline-dark" id="btn1"  (click)="onClickButton()"> ADD NEW PLAYER</button>
-        <button class="btn-outline-dark" id="btn1"  (click)="onClickButton()"> ADD DISCOUNT TO PLAYER</button>
+        <!-- <button class="btn-outline-dark" id="btn1"  (click)="onClickButton()"> ADD DISCOUNT TO PLAYER</button> -->
 
          </div>
 
@@ -75,9 +75,10 @@
                 
                 <div class="yeer" colspan=10>
                 
-                            <button type="button" id="btn2"  class="btn btn-danger" (click)="removeItem (item )"> Remove</button><br> <br>
-                            <button type="button"  id="btn2" class="btn btn-warning" (click)="onClickForm(item)"> Edit</button> <br>
-                             
+                    <div class="d-flex align-items-center">
+                        <button type="button" mat-stroked-button color="basic" class="mr-1" (click)="onRemovePlayer(item)"><mat-icon>delete</mat-icon>Remove</button>
+                        <button type="button" mat-stroked-button color="warn" (click)="onClickForm(item)"><mat-icon>edit</mat-icon>Edit</button>
+                        </div>
                        
                             
                         </div>

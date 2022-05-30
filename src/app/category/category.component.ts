@@ -50,7 +50,7 @@ export class CategoryComponent implements OnInit {
 
 
 
- removeItem(element: CategoryBodyDto ){
+ onRemoveCategory(element: CategoryBodyDto ){
   if(confirm('Are you sure you want to remove ?')){
   // this.listCategory.forEach((value: any,index: any)=>{
   //     if(value == element )

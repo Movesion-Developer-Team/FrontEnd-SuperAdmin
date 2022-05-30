@@ -67,17 +67,17 @@
 
 
     <div class="container">
-        <h1> which company?</h1>
+        <h2> which company?</h2>
     
         <form [formGroup]="discountForm"  class= "form" (ngSubmit)="submit()">
            
              
               <div class="form-group ">
-                <select  class="form-control" formControlName="companyId">
-                    <option *ngFor="let item of listcompany" [value]="item.id">
+                <mat-select  class="form-control" formControlName="companyId">
+                    <mat-option *ngFor="let item of listcompany" [value]="item.id">
                         {{item.name}} 
-                    </option> 
-                </select>
+                    </mat-option> 
+                </mat-select>
                   </div>
             <h2>
                 which player?
@@ -87,27 +87,27 @@
                             <div class="form-group " >
                             
                          
-                              <select  class="form-control" formControlName="playerId" >
-                                  <option *ngFor="let item of listPlayer" [value]="item.id">
+                              <mat-select  class="form-control" formControlName="playerId" >
+                                  <mat-option *ngFor="let item of listPlayer" [value]="item.id">
                                       {{item.shortName}} 
-                                  </option> 
-                              </select>
+                                  </mat-option> 
+                              </mat-select>
                                 <button type="submit" class="btn btn-secondary width:10px "> submit</button>
                                 </div>
                               </form>
                     </div>
 <h2>Related Discount ID:</h2>
                  <div class="form-group ">
-                            <select  class="form-control" formControlName="discountId">
-                                <option *ngFor="let item of discountList" [value]="item.id">
+                            <mat-select  class="form-control" formControlName="discountId">
+                                <mat-option *ngFor="let item of discountList" [value]="item.id">
                                     {{item.name}} 
-                                </option> 
-                            </select>
+                                </mat-option> 
+                            </mat-select>
                  </div>
 
                
                  <div class="form-group">
-                  <h2 >numberOfDiscounts: </h2>
+                  <h2 >NUMBER OF CODES: </h2>
                   <input type="number"formControlName="numberOfDiscounts" class="form-control" placeholder="numberOfDiscounts" >   
                   </div>
          <button class="btn btn-block btn-warning"  type="submit">ASSIGN</button>
@@ -117,12 +117,12 @@
   
 <div class="container">
     
-    <button class="btn btn-secondary " (click)="GetDiscountLimitResponseDto()">Check Availability of Discounts</button>
+    <button class="btn btn-secondary "  id="btn1" (click)="GetDiscountLimitResponseDto()">Check Availability of Discounts</button>
     <div *ngFor="let item of data"> <li> {{item}} </li></div> 
-
+    
 </div>
 
-  
+<app-associationlist></app-associationlist>
 
 
 

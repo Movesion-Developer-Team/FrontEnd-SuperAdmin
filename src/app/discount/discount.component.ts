@@ -65,7 +65,7 @@ export class DiscountComponent implements OnInit {
         
       },
       error: err => {
-     
+     alert('there is an error')
       }
     });
   }

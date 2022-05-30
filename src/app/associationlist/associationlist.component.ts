@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { map, switchMap, tap } from 'rxjs';
 // import { AddPlayerToCompanyBodyDto, CategoryBodyDto, } from '../models/AddPlayerToCompanyBodyDto';
-import { associate } from '../models/associate';
+import { AddPlayerTocompanyBodyDto } from '../models/associate';
 import { CreateNewCompanyBodyDto } from '../models/company';
 import { companyBodyDto } from '../models/companyBodyDto';
 import { companyPlayer } from '../models/companyPlayer';

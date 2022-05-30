@@ -31,6 +31,7 @@
               <tr class="black">
                   <th> Name</th>
                   <th> Description</th>
+                  <th>Action</th>
                   
               </tr>
           </thead>
@@ -41,10 +42,10 @@
                   
                   <td>
                
-                
-                        <button type="button"  id="btn2" class="hl-sort btn btn-danger" (click)="removeItem (item )">Remove</button><br> <br>
-                        <button type="button"  id="btn2" class="hl-sort btn btn-warning" (click)="onClickForm (item)">Edit</button> <br>
-                   
+                    <div class="d-flex align-items-center">
+                        <button type="button" mat-stroked-button color="basic" class="mr-1" (click)="onRemoveCategory(item)"><mat-icon>delete</mat-icon>Remove</button>
+                        <button type="button" mat-stroked-button color="warn" (click)="onClickForm(item)"><mat-icon>edit</mat-icon>Edit</button>
+                        </div>
                  
                   
               </tr>

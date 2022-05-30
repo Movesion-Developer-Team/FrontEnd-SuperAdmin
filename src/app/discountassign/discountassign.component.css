@@ -1,0 +1,11 @@
+*{
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+#btn1{
+    width:180px;
+    font-size: 14px;
+}

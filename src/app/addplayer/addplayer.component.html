@@ -90,19 +90,19 @@
     <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label > categoryId </label>
-                   <select type="number" formControlName="categoryId" class="form-control" placeholder="categoryId" >
-                       <option *ngFor="let item of items" [value]="item.id">
+                   <mat-select type="number" formControlName="categoryId" class="form-control" placeholder="categoryId" >
+                       <mat-option *ngFor="let item of items" [value]="item.id">
                            {{item.name}}
-                       </option> 
-                   </select>
+                       </mat-option> 
+                   </mat-select>
                    </div>
                    <div class="form-group">
                     <label > Discount type </label>
-                           <select type="number" formControlName="discountTypeId" class="form-control" placeholder="DiscountType" >
-                               <option *ngFor="let item of discounts" [value]="item.id" >
+                           <mat-select type="number" formControlName="discountTypeId" class="form-control" placeholder="DiscountType" >
+                               <mat-option *ngFor="let item of discounts" [value]="item.id" >
                                    {{item.name}}
-                               </option> 
-                           </select>
+                               </mat-option> 
+                           </mat-select>
                            </div>
 
 

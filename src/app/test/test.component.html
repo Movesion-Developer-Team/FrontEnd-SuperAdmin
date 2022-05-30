@@ -13,7 +13,12 @@
             </select>
               </div> -->
     
-      
+              <div class="form-group "  hidden>
+                  
+                
+                <label >ID </label>
+                <input type="text"formControlName="id" class="form-control" placeholder="name" >
+          </div>
               <div class="form-group " >
                   
                 
@@ -25,12 +30,10 @@
                    <input type="text"formControlName="address" class="form-control" placeholder="address" > 
                   </div>
                  
+               
+
                 
-                  <!-- <div class="form-group">
-                  <label >numberOfEmployees </label>
-                  <input type="number"formControlName="numberOfEmployees" class="form-control" placeholder="numberOfEmployees" >   
-                  </div> -->
-                  
+            
                     
                     
                     
@@ -49,96 +52,309 @@
                   <div mat-dialog-actions>
                     <button mat-button class="btn btn-secondary btn-block" (click)="onNoClick()">Close</button>
                   </div>
+                  <br>
+                  <br>
          </form>
      
-      
+         
      </div>
     </div>
 
 
+ <div >
+<h1>Add this company to a player?</h1>
+ </div>
 
+<div class="container2">
+
+  <div class="card1" *ngIf="asscoiationForm" >
+    <form [formGroup]="asscoiationForm" (ngSubmit)="submit()">
+     <h1>choose a player </h1>
+      
+       <div class="form-group " >
+         <mat-select  class="form-control" formControlName="playerId">
+             <mat-option *ngFor="let player of listPlayer" [value]="player.id">
+                 {{player.shortName}} 
+             </mat-option> 
+         </mat-select>
+           </div>
+           <button class="btn btn-secondary btn-block" type="submit">Apply</button>
+      
+           
+          </form>
+          <div *ngIf="assigned">
+            <h1> the player is assigned succesfully</h1>
+                       </div>
+</div>
+</div>
+
+    
   </mat-tab>
 
-  <mat-tab label="Assign to player"> 
-    <div class="card" *ngIf="asscoiationForm" >
-     <form [formGroup]="asscoiationForm" (ngSubmit)="submit()">
-      <h1>choose a player </h1>
-       
-        <div class="form-group ">
-          <select  class="form-control" formControlName="playerId">
-              <option *ngFor="let player of listPlayer" [value]="player.id">
-                  {{player.shortName}} 
-              </option> 
-          </select>
-            </div>
-      <h1>assign it to a company:</h1>
-   
-     <div class="form-group">
-    
-            <select class="form-control" formControlName="companyId">
-                <option *ngFor="let company of listCompany" [value]="company.id">
-                    {{company.name}} 
-                </option>
-            </select>
-              </div>
-    
-              <!-- <div class="card" *ngIf="companyForm" >
-                <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" id="company">
-              <div class="form-group " >
-                  
-                
-                  <label >shortname </label>
-                  <input type="text"formControlName="name" class="form-control" placeholder="name" >
-            </div>
-                   -->
-                
-                
-                  
-                    
-                    
-                    
-                    
-                    <!-- <button class="btn btn-primary-secondary btn-block" (onclick)="closethis()"> close</button> -->
-              
-                   
-                   
-                    <button class="btn btn-secondary btn-block" type="submit">Apply</button>
-           
-                
-         </form>
-     
-      
-     </div>
-         
-          
-          <!-- <button class="btn btn-primary-secondary btn-block" (onclick)="closethis()"> close</button> -->
-          <div class="alert alert-warning" *ngIf="assigned && submitted">
-              <br>
-              Your player linked to the company  :)
-          </div>
  
+
+  <mat-tab label="Discount Assign"> 
+
+
+
+    <div class="card"  >
+      <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" id="company" *ngIf="companyForm">
+   <!-- <div class="form-group">
+  
+          <select class="form-control" formControlName="id">
+              <option *ngFor="let company of listCompany" [value]="company.id">
+                  {{company.name}} 
+              </option>
+          </select>
+            </div> -->
+  
+            <div class="form-group "  hidden>
+                
+              
+              <label >ID </label>
+              <input type="text"formControlName="id" class="form-control" placeholder="name" >
+        </div>
+            <div class="form-group " >
+                
+              
+                <label >shortname </label>
+                <input type="text"formControlName="name" class="form-control" placeholder="name" >
+          </div>
+                <div class="form-group ">
+                <label > address </label>
+                 <input type="text"formControlName="address" class="form-control" placeholder="address" > 
+                </div>
+        
+       
+       </form>
+
+
+
+
+       <div class="container">
+    
+        <button class="btn btn-secondary "  id="btn1" (click)="GetAllPlayersForOneCompany()">show the List of players of this company </button>
+<br>
+<br>
+
+
+
+        <form [formGroup]="GetAllPlayersForaCompany" (ngSubmit)="getDiscount()" >
+          <div class="form-group " *ngIf="selected" >
+            <mat-select  class="form-control" formControlName="playerId" >
+                <mat-option *ngFor="let item of GetAllPlayersForOneCompanyList" [value]="item.id">
+                    {{item.shortName}} 
+                </mat-option> 
+            </mat-select>
+            <br> <br>
+              <button type="submit" class="btn btn-secondary width:10px ">select this player</button>
+              </div>
+            
+            </form>
+<br>
+<br>
+
+
+
+
+            
+            <form [formGroup]="GetAllDiscountForaplayer" (ngSubmit)="apply()" >
+
+              <div class="form-group " *ngIf="selected" >
+                <h1>discounts</h1>
+                <mat-select  class="form-control" formControlName="discountId" >
+                    <mat-option *ngFor="let item of discountList" [value]="item.id">
+                        {{item.name}} 
+                    </mat-option> 
+                </mat-select>
+                  <!-- <button type="submit" class="btn btn-secondary width:10px ">select this discount</button> -->
+                  </div>
+                </form>
+
+
+<br>
+<br>
+
+
+<button class="btn btn-primary" (click)="assignDtoC()" *ngIf="selected"> Assign this discount to this company </button>
+
+        
+        <!-- <mat-select *ngFor="let item of GetAllPlayersForOneCompanyList" >
+           <mat-option > {{item.shortName}} </mat-option>
+          </mat-select> 
           <br>
-          
+          <button *ngIf="selected" (click)="getDiscount()"> Select this player</button>
+          <mat-select *ngFor="let item of discountList">
+            <mat-option >
+                {{item.name}} 
+            </mat-option> 
+        </mat-select> -->
+
          
+ 
+        
+    </div>
+   
+       
+   </div>
+          
+        <br>
+        <br>
+        <br>
+
   
           <div mat-dialog-actions>
             <button mat-button class="btn btn-secondary btn-block" (click)="onNoClick()">Close</button>
           </div>
+          <br>
+          <br>
+       
+
      
-<app-associationlist></app-associationlist>
-
-
-
-
-  </mat-tab>
 
 
 
 
 
+  </mat-tab> -->
 
 
 
+
+
+
+
+<mat-tab label="Add Discount codes to company">
+
+  <div class="card"  >
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()" id="company" *ngIf="companyForm">
+ <!-- <div class="form-group">
+
+        <select class="form-control" formControlName="id">
+            <option *ngFor="let company of listCompany" [value]="company.id">
+                {{company.name}} 
+            </option>
+        </select>
+          </div> -->
+
+          <div class="form-group "  hidden>
+              
+            
+            <label >ID </label>
+            <input type="text"formControlName="id" class="form-control" placeholder="name" >
+      </div>
+          <div class="form-group " >
+              
+            
+              <label >shortname </label>
+              <input type="text"formControlName="name" class="form-control" placeholder="name" >
+        </div>
+              <div class="form-group ">
+              <label > address </label>
+               <input type="text"formControlName="address" class="form-control" placeholder="address" > 
+              </div>
+      
+     
+     </form>
+
+    </div>
+    <div class="container">
+    
+      <button class="btn btn-secondary "  id="btn1" (click)="GetAllPlayersForOneCompany()">show the List of players of this company </button>
+<br>
+<br>
+<br>
+
+
+
+      <form [formGroup]="GetAllPlayersForaCompany" (ngSubmit)="GetAllDiscountsForPlayerOfCompany()" >
+        <div class="form-group " *ngIf="selected" >
+          <mat-select  class="form-control" formControlName="playerId">
+              <mat-option *ngFor="let item of GetAllPlayersForOneCompanyList" [value]="item.id">
+                  {{item.shortName}}
+              </mat-option> 
+          </mat-select>
+          <br>
+          <br>
+          
+
+            <button type="submit" class="btn btn-secondary width:10px ">select this player</button>
+            </div>
+          </form>
+<br>
+<br>
+</div>
+<div class="container">
+    
+<form [formGroup]="GetAllDiscountCodesList" (ngSubmit)="GetAllDiscountsForPlayerOfCompany()" >
+  
+  <div class="form-group " *ngIf="selected" >
+    <h1>
+      discount codes:
+    </h1>
+   
+    <mat-select  class="form-control" formControlName="discountId">
+        <mat-option *ngFor="let item of GetAllDiscountsForPlayerOfCompanyList" [value]="item.id">
+            {{item.name}}
+        </mat-option> 
+    </mat-select>
+    <br>
+    <br>
+    <br>
+      <button type="submit" class="btn btn-secondary width:10px ">select this discount</button>
+      </div>
+    </form>
+</div>
+
+
+<div class="container" *ngIf="selected">
+  <form [formGroup]="quantity" (ngSubmit)="AssignDiscountCodesToCompanyBodyDto()" >
+    <div class="form-group " *ngIf="selected" >
+ <h1>
+   
+   how many discount?
+ </h1>
+
+ 
+  <input type="number"  formControlName="numberOfDiscountCodes" class="form-control" placeholder="number of discunt codes" >   
+
+
+  <br>
+
+  <h1>
+   
+    Price € :
+  </h1>
+ 
+ 
+   <input type="number"  formControlName="price" class="form-control" placeholder="price" >   
+ 
+   
+ 
+
+</div>
+<button type="submit" class="btn btn-secondary width:10px ">APPLY</button>
+
+
+</form>
+<div *ngIf="accepted">
+  <h1>
+    ASSIGNED
+  </h1>
+  </div>
+<hr>
+<br>
+<br>
+
+<div class="container" >
+    
+  <button class="btn btn-warning btn-block"  id="btn2" (click)="Availability()"> <img src="https://img.icons8.com/external-filled-outline-02-chattapat-/64/000000/external-button-social-media-filled-outline-02-chattapat-.png"/>  Availability </button>
+  
+  <div class="container" *ngFor="let item of data1"> <li> {{item}} </li></div> 
+  
+</div>
+</div>
+</mat-tab>
 
 
 
@@ -154,8 +370,12 @@
 
 
 
+<!-- <h1>discountList</h1>
+<li *ngFor="let item of discountList">
+{{item.name}}
+</li>
 
-
-
-
-
+<h1>GetAllDiscountsForPlayerOfCompanyList</h1>
+<li *ngFor="let item of GetAllDiscountsForPlayerOfCompanyList">
+{{item.name}}
+</li> -->

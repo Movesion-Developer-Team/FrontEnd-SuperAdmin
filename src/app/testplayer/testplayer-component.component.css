@@ -1,24 +1,10 @@
 
-.body{
-    overflow: hidden;
-    position:fixed;
-    overflow:hidden;
-    max-width:100px;
-    background: black;
+.card{
+  min-height: 800px;
+  width:650px;
 }
 
-.mat-dialog-content{
-  height:100%;
-    max-width:775px;
-  
-    
-   
-
-
-}
-
-.custom-modalbox
-.mat-dialog-container{
-    background-color:black;
+#btn{
+    width:100px;
 }
 

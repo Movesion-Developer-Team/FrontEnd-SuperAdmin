@@ -70,7 +70,7 @@ listsalar!:DiscountTypeBodyDto[]
    
 
 
-  removeItem(element:PlayerBodyDto){
+  onRemovePlayer(element:PlayerBodyDto){
 
 
     if(confirm('Are you sure you want to remove')){
@@ -222,9 +222,9 @@ listsalar!:DiscountTypeBodyDto[]
   
  onClickForm(item: CreateNewPlayerBodyDto){
   this.dialog.open(TestplayerComponentComponent, {
-    width: '800px',
-    height:'1100px',
-    panelClass: 'custom-modalbox',
+    width: '750px',
+    height:'100%',
+ 
     data: {
       playerid: item.id
     },})

@@ -55,6 +55,7 @@ import { AddCodesComponent } from './add-codes/add-codes.component';
 import { CodesComponent } from './codes/codes.component';
 import { FlatfileAdapterModule } from '@flatfile/angular';
 import { UploadCsvComponent } from './upload-csv/upload-csv.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 
 
@@ -94,6 +95,7 @@ import { UploadCsvComponent } from './upload-csv/upload-csv.component';
     AddCodesComponent,
     CodesComponent,
     UploadCsvComponent,
+    MainpageComponent,
     
     
     

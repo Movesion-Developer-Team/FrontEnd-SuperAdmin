@@ -149,9 +149,9 @@ submit(){
   GetDiscountLimitResponseDto(){
     
 
-     var salar= this.discountForm.get('discountId')?.value
+     var info= this.discountForm.get('discountId')?.value
 
-    this.http.get<GetDiscountLimitResponseDto>('https://localhost:7098/Discount/GetDiscountLimit?discountId='+ salar ).pipe(
+    this.http.get<GetDiscountLimitResponseDto>('https://localhost:7098/Discount/GetDiscountLimit?discountId='+ info ).pipe(
       map(res => res.limit)
 
     ).subscribe(res => {
@@ -168,7 +168,7 @@ submit(){
      
     
     
-  //ssad
+ 
   
   
 
