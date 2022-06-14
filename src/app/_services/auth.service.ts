@@ -195,7 +195,17 @@ associate(companyId:number,playerId:number):Observable<AddPlayerTocompanyBodyDto
 
 
 
+addImageToPlayer(idPlayer: Number):Observable<BaseResponse> {
+  return this.http.post<BaseResponse>(Company_API+ 'Player/AddImageToPlayer/', {
 
+ idPlayer,
+
+
+  },httpOptions)
+
+
+
+}
 
 
 AssignDiscountToCompany(companyId:number,discountId:number):Observable<BaseResponse>{
