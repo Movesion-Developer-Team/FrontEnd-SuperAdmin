@@ -1,3 +1,4 @@
+import { FocusTrapManager } from '@angular/cdk/a11y/focus-trap/focus-trap-manager';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -28,7 +29,7 @@ export class TestplayerComponentComponent implements OnInit {
   listPlayer!:PlayerBodyDto[];
   id: number | undefined ;
 
-
+fileForm!:FormGroup;
 
 
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
@@ -48,6 +49,16 @@ export class TestplayerComponentComponent implements OnInit {
     
     this.listPlayer=[];
   
+    this.fileForm=this.fb.group({
+     playerId:[this.id,Validators.required],
+      name: ['', Validators.required, Validators.minLength(3)],
+      file: ['', Validators.required],
+      fileSource: ['', Validators.required] 
+     })
+    
+
+
+
 
     // this.playerForm=this.fb.group({
 
@@ -138,9 +149,32 @@ export class TestplayerComponentComponent implements OnInit {
     })
 
   }
-  
+  onFileChange(event:any) {
     
-  
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.fileForm.patchValue({
+        fileSource: file
+      });
+    }
+  }
+    submit(){
+      var formData = new FormData();
+      formData.append( 'file',this.fileForm.get('fileSource')?.value );
+    
+    this.http.post('https://localhost:7098/Player/AddImageToPlayer/', formData, {params: this.fileForm.value}  )
+    .subscribe(res => {
+      console.log(res);
+      
+      alert('Uploaded Successfully.');
+      
+    },
+    
+  catchError    => { alert ('your file is either empty or already assigned')}
+ 
+ 
+    
+    );
     
   }
-  
+}

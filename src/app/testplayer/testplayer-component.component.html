@@ -64,6 +64,32 @@
     </mat-tab>
 </mat-tab-group>
 
+
+
+<form [formGroup]="fileForm" (ngSubmit)="submit()" >
+  
+                <label for="file">
+                    
+<i class="material-icons left">cloud</i> <br> 
+                </label>
+                <input 
+                    formControlName="file"
+                    id="file" 
+                    type="file" 
+                    class="form-control"
+                    (change)="onFileChange($event)">
+                
+           
+         
+               <button type="submit" class="btn btn-secondary btn-block" >Add Image</button>
+               <!-- <div mat-dialog-actions>
+                <button mat-button class="btn btn-secondary btn-block" (click)="onNoClick()">Close</button>
+              </div> -->
+              
+            </form>
+
+
+
 <div mat-dialog-actions id="btn">
     <button mat-button class="btn btn-secondary btn-block" (click)="onNoClick()">Close</button>
   </div>
